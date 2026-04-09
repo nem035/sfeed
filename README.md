@@ -1,14 +1,23 @@
 # sfeed
 
-Post to Facebook Pages and Instagram from the terminal or through MCP.
+Post to social media with AI agents.
 
-sfeed is a CLI for people who want to automate social posting, and an MCP server for agents that need to do the same work safely.
+sfeed is a CLI and MCP server for posting to Facebook Pages and Instagram with AI agents.
 
 Most of the product lives at [sfeed.dev](https://sfeed.dev).
 
 - Docs: [sfeed.dev/docs](https://sfeed.dev/docs)
 - Install: [sfeed.dev/install.sh](https://sfeed.dev/install.sh)
 - Pricing: [sfeed.dev/pricing](https://sfeed.dev/pricing)
+
+## How to post to social media with AI
+
+1. Install `sfeed`
+2. Run `sfeed auth facebook`
+3. Run `sfeed mcp`
+4. Tell your agent what to post
+
+That gives the agent a real posting tool instead of a prompt-only workflow.
 
 ## What it does
 
