@@ -96,43 +96,9 @@ Claude Desktop config:
 }
 ```
 
-Useful MCP tools:
+Once connected, the agent can inspect status, choose the right Page, post immediately, schedule posts, and manage the queue.
 
-- `sfeed_status`
-- `sfeed_pages`
-- `sfeed_post`
-- `sfeed_schedule_status`
-- `sfeed_schedule_dashboard_url`
-- `sfeed_schedule_preview_url`
-- `sfeed_schedule_list`
-- `sfeed_schedule_reschedule`
-- `sfeed_schedule_duplicate`
-- `sfeed_schedule_cancel`
-
-## How scheduling works
-
-When you schedule a post, sfeed stores the job in the hosted queue and publishes it when it becomes due.
-
-You can inspect that queue in three ways:
-
-- `sfeed schedule status` for a terminal summary
-- `sfeed schedule open` for the full hosted queue UI
-- `sfeed schedule preview <id>` for a browser preview of one job
-
-```mermaid
-sequenceDiagram
-  participant User
-  participant Agent
-  participant sfeed
-  participant Queue as Hosted queue
-  participant Meta
-
-  User->>Agent: Schedule this post for tomorrow
-  Agent->>sfeed: sfeed_post or schedule tool
-  sfeed->>Queue: Store pending job
-  Agent->>sfeed: Open preview or queue UI
-  Queue->>Meta: Publish when due
-```
+Full MCP docs: [sfeed.dev/docs/mcp](https://sfeed.dev/docs/mcp)
 
 ## Current platforms
 
