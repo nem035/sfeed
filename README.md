@@ -7,7 +7,7 @@ sfeed is a CLI and MCP server for posting to Facebook Pages and Instagram with A
 Most of the product lives at [sfeed.dev](https://sfeed.dev).
 
 - Docs: [sfeed.dev/docs](https://sfeed.dev/docs)
-- Install: [sfeed.dev/install.sh](https://sfeed.dev/install.sh)
+- Install: [sfeed.dev/docs#install](https://sfeed.dev/docs#install)
 - Pricing: [sfeed.dev/pricing](https://sfeed.dev/pricing)
 
 ## How to post to social media with AI
