@@ -17,7 +17,7 @@ Most of the product lives at [sfeed.dev](https://sfeed.dev).
 3. Run `sfeed mcp`
 4. Tell your agent what to post
 
-That gives the agent a real posting tool instead of a prompt-only workflow.
+You can keep your posts, media, prompts, and schedules however you want on your own machine. Then you tell Claude, Codex, OpenCode, or another MCP client to use sfeed to publish them according to your rules.
 
 ## What it does
 
