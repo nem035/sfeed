@@ -9,46 +9,29 @@ Most of the product lives at [sfeed.dev](https://sfeed.dev).
 - Docs: [sfeed.dev/docs](https://sfeed.dev/docs)
 - Install: [sfeed.dev/docs#install](https://sfeed.dev/docs#install)
 - Pricing: [sfeed.dev/pricing](https://sfeed.dev/pricing)
+- AI guide: [sfeed.dev/post-to-social-media-with-ai](https://sfeed.dev/post-to-social-media-with-ai)
 
 ## How to post to social media with AI
 
 1. Install `sfeed`
 2. Run `sfeed auth facebook`
 3. Run `sfeed mcp`
-4. Tell your agent what to post
+4. Tell your agent to read your local files and use `sfeed` to publish
 
 You can keep your posts, media, prompts, and schedules however you want on your own machine. Then you tell Claude, Codex, OpenCode, or another MCP client to use sfeed to publish them according to your rules.
 
-## What it does
+## Local workflow
 
-- Connect Facebook Pages and linked Instagram accounts with one browser auth flow
-- Post now from the terminal
-- Schedule posts for later, even when your laptop is closed
-- Open browser previews for scheduled posts
-- Expose MCP tools so agents can inspect status, schedule work, and manage the queue
-
-## Agent-first workflow
-
-sfeed is built to be driven by an agent.
-
-Run `sfeed mcp`, connect it to Claude, Codex, OpenCode, or any MCP client, and the agent can:
-
-- check connected accounts
-- inspect page choices
-- create immediate posts
-- schedule posts
-- open the hosted queue UI
-- open a hosted preview for one scheduled post
-- reschedule, duplicate, or cancel queued jobs
-
-```mermaid
-flowchart LR
-  User[User] --> Agent[AI agent]
-  Agent --> MCP[sfeed MCP server]
-  MCP --> CLI[sfeed CLI]
-  CLI --> Meta[Facebook and Instagram]
-  CLI --> Hosted[Hosted scheduling and previews]
+```text
+social/
+  rules.md
+  queue/
+    2026-04-15-launch.md
+  media/
+    launch-card.jpg
 ```
+
+Your files stay local. Your agent reads them. `sfeed` handles auth, posting, scheduling, previews, and the hosted queue.
 
 ## Install
 
@@ -109,10 +92,13 @@ Once connected, the agent can inspect status, choose the right Page, post immedi
 
 Full MCP docs: [sfeed.dev/docs/mcp](https://sfeed.dev/docs/mcp)
 
-## Current platforms
+## Start here
 
-- Facebook Pages
-- Instagram Business or Creator accounts linked to a Facebook Page
+- [How to post to social media with AI](https://sfeed.dev/post-to-social-media-with-ai)
+- [How to post to Facebook with AI](https://sfeed.dev/post-to-facebook-with-ai)
+- [How to post to Instagram with AI](https://sfeed.dev/post-to-instagram-with-ai)
+- [How to schedule social media posts with AI](https://sfeed.dev/schedule-social-media-posts-with-ai)
+- [Local files social media workflow](https://sfeed.dev/local-files-social-media-workflow)
 
 ## Links
 
