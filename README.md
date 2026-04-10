@@ -63,6 +63,8 @@ That connects your accounts and starts the MCP server.
 ```bash
 sfeed post "shipping today" --to facebook
 sfeed post "launch image" --to instagram --media ./launch.jpg
+sfeed post "launch carousel" --to instagram --media ./1.jpg,./2.jpg,./3.jpg
+sfeed post "event photos" --to facebook --media ./1.jpg,./2.jpg,./3.jpg
 sfeed post "tomorrow at 9" --to facebook --at "2026-04-10T13:00:00Z"
 
 sfeed schedule status
@@ -72,6 +74,8 @@ sfeed schedule reschedule <id> --at "2026-04-11T13:00:00Z"
 sfeed schedule duplicate <id>
 sfeed schedule cancel <id>
 ```
+
+Facebook supports text-only, single-image, multi-image, and single-video posts. Instagram supports single-image, single-video, and image-only carousels up to 10 items.
 
 ## MCP example
 
