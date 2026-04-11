@@ -40,6 +40,7 @@ Your files stay local. Your agent reads them. `sfeed` handles auth, posting, sch
 This repo contains a small set of public-safe `SKILL.md` files for skills-compatible agents:
 
 - [`sfeed`](./sfeed/SKILL.md), the main posting and MCP workflow
+- [`facebook-posting`](./facebook-posting/SKILL.md), for Facebook Page posting flows
 - [`instagram-posting`](./instagram-posting/SKILL.md), for Instagram-specific constraints and media shapes
 - [`social-scheduling`](./social-scheduling/SKILL.md), for queue inspection and scheduling flows
 
@@ -51,6 +52,15 @@ Each skill includes:
 - platform constraints that commonly cause mistakes
 
 They describe how to use `sfeed`, not how `sfeed` is deployed.
+
+Install examples:
+
+```bash
+npx skills add https://github.com/nem035/sfeed --skill sfeed
+npx skills add https://github.com/nem035/sfeed --skill facebook-posting
+npx skills add https://github.com/nem035/sfeed --skill instagram-posting
+npx skills add https://github.com/nem035/sfeed --skill social-scheduling
+```
 
 ## Install
 
