@@ -33,6 +33,18 @@ social/
 
 Your files stay local. Your agent reads them. `sfeed` handles auth, posting, scheduling, previews, and the hosted queue.
 
+## Skills for AI agents
+
+This repo also contains focused `SKILL.md` files for agent workflows:
+
+- [`social-posting`](./social-posting/SKILL.md)
+- [`facebook-posting`](./facebook-posting/SKILL.md)
+- [`instagram-posting`](./instagram-posting/SKILL.md)
+- [`social-scheduling`](./social-scheduling/SKILL.md)
+- [`local-files-social-workflow`](./local-files-social-workflow/SKILL.md)
+
+They are written for agent marketplaces such as `skills.sh`, and they stay public-safe. They describe how to use `sfeed`, not how `sfeed` is deployed.
+
 ## Install
 
 Use the install script:
