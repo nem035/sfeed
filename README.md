@@ -1,8 +1,8 @@
-# sfeed
+# sfeed Agent Skills
 
-Post to social media with AI agents.
+A collection of skills for AI agents that post to Facebook Pages and Instagram with `sfeed`.
 
-sfeed is a CLI and MCP server for posting to Facebook Pages and Instagram with AI agents.
+`sfeed` is a CLI and MCP server for posting to Facebook Pages and Instagram with AI agents.
 
 Most of the product lives at [sfeed.dev](https://sfeed.dev).
 
@@ -35,32 +35,75 @@ social/
 
 Your files stay local. Your agent reads them. `sfeed` handles auth, posting, scheduling, previews, and the hosted queue.
 
-## Skills for AI agents
+## Available Skills
 
-This repo contains a small set of public-safe `SKILL.md` files for skills-compatible agents:
+### sfeed
 
-- [`sfeed`](./sfeed/SKILL.md), the main posting and MCP workflow
-- [`facebook-posting`](./facebook-posting/SKILL.md), for Facebook Page posting flows
-- [`instagram-posting`](./instagram-posting/SKILL.md), for Instagram-specific constraints and media shapes
-- [`social-scheduling`](./social-scheduling/SKILL.md), for queue inspection and scheduling flows
+The main posting and MCP workflow.
 
-Each skill includes:
+Use when:
 
-- install and setup checks
-- concrete agent workflows
-- practical examples with local files, page selection, and queue actions
-- platform constraints that commonly cause mistakes
+- the user wants to post with `sfeed`
+- the user wants to run `sfeed mcp`
+- the user wants an agent to read local files and publish or schedule work
+- the task spans Facebook, Instagram, and scheduling together
 
-They describe how to use `sfeed`, not how `sfeed` is deployed.
+### facebook-posting
 
-Install examples:
+Facebook Page posting workflow.
+
+Use when:
+
+- the user wants to post to a Facebook Page
+- the task involves Facebook-specific post shapes such as multi-image posts
+- the user needs explicit page selection with `sfeed pages`
+
+### instagram-posting
+
+Instagram-specific publishing workflow.
+
+Use when:
+
+- the user wants to post to Instagram with `sfeed`
+- the task depends on media requirements, carousels, or Reels behavior
+- the user needs help with the professional-account and linked-Page requirement
+
+### social-scheduling
+
+Hosted queue and scheduling workflow.
+
+Use when:
+
+- the user wants to schedule posts for later
+- the user wants previews, queue inspection, rescheduling, duplication, or canceling
+- the task requires local timezone awareness
+
+## Installation
 
 ```bash
-npx skills add https://github.com/nem035/sfeed --skill sfeed
-npx skills add https://github.com/nem035/sfeed --skill facebook-posting
-npx skills add https://github.com/nem035/sfeed --skill instagram-posting
-npx skills add https://github.com/nem035/sfeed --skill social-scheduling
+npx skills add nem035/sfeed --list
 ```
+
+Install all skills from this repo:
+
+```bash
+npx skills add nem035/sfeed
+```
+
+Install specific skills:
+
+```bash
+npx skills add nem035/sfeed --skill sfeed
+npx skills add nem035/sfeed --skill facebook-posting
+npx skills add nem035/sfeed --skill instagram-posting
+npx skills add nem035/sfeed --skill social-scheduling
+```
+
+## Skill Structure
+
+Each skill is in `skills/<name>/SKILL.md`.
+
+Skills describe how to use `sfeed`, not how `sfeed` is deployed.
 
 ## Install
 
