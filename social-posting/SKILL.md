@@ -28,6 +28,16 @@ If the user wants agent access:
 sfeed mcp
 ```
 
+If the user wants Instagram posting, make sure this is true before you proceed:
+
+- the Instagram account is a professional account
+- the Instagram account is linked to a Facebook Page
+
+Meta setup help:
+
+- https://www.facebook.com/help/instagram/138925576505882
+- https://www.facebook.com/help/1148909221857370
+
 ## Default workflow
 
 1. Read the user's local post files and media files.
@@ -68,6 +78,7 @@ sfeed post "launch update" --to facebook --page <page-id>
 - Show the draft before posting if review is expected
 - Use `sfeed pages` when more than one Page is connected
 - Use scheduling when the user gives a publish time
+- For Instagram, confirm the account is professional and linked to a Facebook Page
 
 ## Docs
 

@@ -29,6 +29,8 @@ sfeed auth facebook
 sfeed mcp
 ```
 
+If the workflow includes Instagram posts, make sure the Instagram account is a professional account linked to a Facebook Page first.
+
 ## Workflow
 
 1. Read the user's local rules, drafts, and media references.

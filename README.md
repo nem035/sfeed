@@ -20,6 +20,8 @@ Most of the product lives at [sfeed.dev](https://sfeed.dev).
 
 You can keep your posts, media, prompts, and schedules however you want on your own machine. Then you tell Claude, Codex, OpenCode, or another MCP client to use sfeed to publish them according to your rules.
 
+If you only want to post to Instagram, the setup is still `sfeed auth facebook`. Meta requires a professional Instagram account linked to a Facebook Page for Instagram publishing access. After setup, you can still post only to Instagram.
+
 ## Local workflow
 
 ```text
@@ -69,6 +71,11 @@ sfeed mcp
 ```
 
 That connects your accounts and starts the MCP server.
+
+For Instagram posting, your Instagram account must be a professional account linked to a Facebook Page. Meta setup help:
+
+- https://www.facebook.com/help/instagram/138925576505882
+- https://www.facebook.com/help/1148909221857370
 
 ## CLI examples
 

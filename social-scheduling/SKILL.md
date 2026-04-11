@@ -10,6 +10,8 @@ sfeed doctor
 
 Hosted scheduling requires an active subscription.
 
+For Instagram scheduling, the Instagram account must be a professional account linked to a Facebook Page.
+
 ## Schedule a post
 
 Facebook:

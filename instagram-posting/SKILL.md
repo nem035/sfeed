@@ -14,7 +14,15 @@ If Instagram is not available yet, connect Facebook first:
 sfeed auth facebook
 ```
 
-The Instagram account must be linked to a Facebook Page.
+For Instagram posting with `sfeed`, the account must be:
+
+- a professional Instagram account
+- linked to a Facebook Page
+
+Meta setup help:
+
+- https://www.facebook.com/help/instagram/138925576505882
+- https://www.facebook.com/help/1148909221857370
 
 ## Instagram support
 
@@ -59,6 +67,7 @@ sfeed post "tomorrow at 9" --to instagram --media ./launch.jpg --at "2026-04-15T
 - Check that media files exist before posting
 - Do not try text-only Instagram posts
 - Use a carousel only when all media items are images
+- If Instagram is missing, tell the user to switch to a professional account and link it to a Facebook Page first
 
 ## Docs
 
