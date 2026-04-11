@@ -37,15 +37,20 @@ Your files stay local. Your agent reads them. `sfeed` handles auth, posting, sch
 
 ## Skills for AI agents
 
-This repo also contains focused `SKILL.md` files for agent workflows:
+This repo contains a small set of public-safe `SKILL.md` files for skills-compatible agents:
 
-- [`social-posting`](./social-posting/SKILL.md)
-- [`facebook-posting`](./facebook-posting/SKILL.md)
-- [`instagram-posting`](./instagram-posting/SKILL.md)
-- [`social-scheduling`](./social-scheduling/SKILL.md)
-- [`local-files-social-workflow`](./local-files-social-workflow/SKILL.md)
+- [`sfeed`](./sfeed/SKILL.md), the main posting and MCP workflow
+- [`instagram-posting`](./instagram-posting/SKILL.md), for Instagram-specific constraints and media shapes
+- [`social-scheduling`](./social-scheduling/SKILL.md), for queue inspection and scheduling flows
 
-They are written for agent marketplaces such as `skills.sh`, and they stay public-safe. They describe how to use `sfeed`, not how `sfeed` is deployed.
+Each skill includes:
+
+- install and setup checks
+- concrete agent workflows
+- practical examples with local files, page selection, and queue actions
+- platform constraints that commonly cause mistakes
+
+They describe how to use `sfeed`, not how `sfeed` is deployed.
 
 ## Install
 
@@ -77,14 +82,26 @@ For Instagram posting, your Instagram account must be a professional account lin
 - https://www.facebook.com/help/instagram/138925576505882
 - https://www.facebook.com/help/1148909221857370
 
-## CLI examples
+## Practical examples
 
 ```bash
-sfeed post "shipping today" --to facebook
-sfeed post "launch image" --to instagram --media ./launch.jpg
-sfeed post "launch carousel" --to instagram --media ./1.jpg,./2.jpg,./3.jpg
-sfeed post "event photos" --to facebook --media ./1.jpg,./2.jpg,./3.jpg
-sfeed post "tomorrow at 9" --to facebook --at "2026-04-10T13:00:00Z"
+sfeed doctor
+sfeed pages
+
+sfeed post "Launch day. v0.1.3 is live." \
+  --to facebook \
+  --page "Acme Robotics" \
+  --media ./content/media/launch-card.jpg
+
+sfeed post "Spring drop, 8 new pieces." \
+  --to instagram \
+  --page "Acme Robotics" \
+  --media ./content/media/look-1.jpg,./content/media/look-2.jpg,./content/media/look-3.jpg
+
+sfeed post "Tuesday product update" \
+  --to facebook \
+  --page "Acme Robotics" \
+  --at "2026-04-15T13:00:00Z"
 
 sfeed schedule status
 sfeed schedule open
