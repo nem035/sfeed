@@ -2,7 +2,7 @@
 name: facebook-posting
 description: >-
   Use this skill when the user wants to publish or schedule Facebook Page posts
-  with sfeed. Check that sfeed is installed, run sfeed doctor, use sfeed pages
+  with sfeed. Check that sfeed is installed, run sfeed status, use sfeed pages
   when more than one Page is connected, and handle Facebook post shapes such as
   text-only posts, single-image posts, multi-image posts, and single-video
   posts.
@@ -16,7 +16,7 @@ Use this skill when the task is specifically about posting to Facebook Pages wit
 
 1. Check `sfeed --version`
 2. If needed, install `sfeed`
-3. Run `sfeed doctor`
+3. Run `sfeed status`
 4. If Meta is not connected, run `sfeed auth facebook`
 
 Important constraints:
@@ -34,7 +34,7 @@ User request:
 Useful command flow:
 
 ```bash
-sfeed doctor
+sfeed status
 sfeed pages
 sfeed post "Launch day. v0.1.3 is live." \
   --to facebook \
@@ -79,6 +79,7 @@ sfeed post "Tomorrow's product update" \
 
 sfeed schedule status
 sfeed schedule open
+sfeed schedule calendar
 ```
 
 ## References

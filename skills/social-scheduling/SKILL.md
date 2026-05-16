@@ -3,7 +3,7 @@ name: social-scheduling
 description: >-
   Use this skill when the user wants to schedule, inspect, preview, reschedule,
   duplicate, or cancel social posts with sfeed. Verify that sfeed is installed,
-  run sfeed doctor, confirm hosted scheduling is available, and manage the queue
+  run sfeed status, confirm hosted scheduling is available, and manage the queue
   with the schedule commands while keeping timezone handling and Instagram media
   requirements explicit.
 ---
@@ -16,7 +16,7 @@ Use this skill when the task is queue management or scheduled publishing with `s
 
 1. Check `sfeed --version`
 2. If needed, install `sfeed`
-3. Run `sfeed doctor`
+3. Run `sfeed status`
 4. Confirm hosted scheduling is available
 
 Important setup notes:
@@ -33,6 +33,7 @@ sfeed schedule status
 sfeed schedule list
 sfeed schedule preview <id>
 sfeed schedule open
+sfeed schedule calendar
 sfeed schedule reschedule <id> --at "2026-04-16T13:00:00Z"
 sfeed schedule duplicate <id>
 sfeed schedule cancel <id>
@@ -55,6 +56,8 @@ sfeed post "Tomorrow's product update" \
 sfeed schedule status
 sfeed schedule list
 ```
+
+Use `sfeed dashboard` for the same hosted queue UI, or `sfeed calendar` for the calendar view.
 
 ## Practical example: schedule an Instagram asset review
 

@@ -3,7 +3,7 @@ name: sfeed
 description: >-
   Use this skill when the user wants to post or schedule content on Facebook
   Pages or Instagram with sfeed, especially from local drafts, media files, or
-  MCP workflows. Install sfeed if it is missing, run sfeed doctor, connect Meta
+  MCP workflows. Install sfeed if it is missing, run sfeed status, connect Meta
   accounts with sfeed auth facebook, use sfeed pages when more than one Page is
   connected, and use sfeed post or queue commands to publish or schedule work.
 ---
@@ -31,7 +31,7 @@ or
 npm install -g @sfeed/cli
 ```
 
-3. Run `sfeed doctor`
+3. Run `sfeed status`
 4. If Meta is not connected, run `sfeed auth facebook`
 5. If the task will be handled through an agent client, run `sfeed mcp`
 
@@ -46,7 +46,7 @@ npm install -g @sfeed/cli
 
 ## Default workflow
 
-1. Inspect setup with `sfeed doctor`
+1. Inspect setup with `sfeed status`
 2. If more than one Page is connected, run `sfeed pages`
 3. Read the user's local drafts and media files
 4. Draft or confirm the final post content
@@ -62,7 +62,7 @@ User request:
 Useful command flow:
 
 ```bash
-sfeed doctor
+sfeed status
 sfeed pages
 sfeed post "Launch day. v0.1.3 is live." \
   --to facebook \
@@ -85,7 +85,7 @@ User request:
 Useful command flow:
 
 ```bash
-sfeed doctor
+sfeed status
 sfeed mcp
 ```
 
@@ -113,7 +113,10 @@ sfeed post "Tomorrow's shipping update" \
 
 sfeed schedule status
 sfeed schedule open
+sfeed schedule calendar
 ```
+
+Use `sfeed dashboard` or `sfeed calendar` as shortcuts for opening the hosted queue UI.
 
 ## References
 

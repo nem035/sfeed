@@ -138,7 +138,7 @@ For Instagram posting, your Instagram account must be a professional account lin
 ## Practical examples
 
 ```bash
-sfeed doctor
+sfeed status
 sfeed pages
 
 sfeed post "Launch day. v0.1.3 is live." \
@@ -158,6 +158,7 @@ sfeed post "Tuesday product update" \
 
 sfeed schedule status
 sfeed schedule open
+sfeed schedule calendar
 sfeed schedule preview <id>
 sfeed schedule reschedule <id> --at "2026-04-11T13:00:00Z"
 sfeed schedule duplicate <id>

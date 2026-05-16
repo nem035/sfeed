@@ -16,7 +16,7 @@ Use this skill when the task is specifically about Instagram publishing with `sf
 
 1. Check `sfeed --version`
 2. If needed, install `sfeed`
-3. Run `sfeed doctor`
+3. Run `sfeed status`
 4. If Instagram is not available yet, run `sfeed auth facebook`
 
 For Instagram posting with `sfeed`, the account must be:
@@ -47,7 +47,7 @@ User request:
 Useful command flow:
 
 ```bash
-sfeed doctor
+sfeed status
 sfeed pages
 sfeed post "Launch day. v0.1.3 is live." \
   --to instagram \
