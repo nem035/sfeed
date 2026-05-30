@@ -4,9 +4,9 @@ description: >-
   Use this skill when the user wants to publish or schedule Instagram posts with
   sfeed. Check that sfeed is installed, verify that the Instagram account is a
   professional account linked to a Facebook Page, ask where drafts and media
-  live, ensure media is present, show the caption, media, and destination before
-  publishing, and handle Instagram-specific post shapes such as single-image
-  posts, single-video posts, and image-only carousels.
+  already live, ensure media is present, show the caption, media, and
+  destination before publishing, and handle Instagram-specific post shapes such
+  as single-image posts, single-video posts, and image-only carousels.
 ---
 
 # Instagram Posting With sfeed
@@ -15,7 +15,7 @@ Use this skill when the task is specifically about Instagram publishing with `sf
 
 ## Install and setup
 
-1. Ask where the user's Instagram drafts, media, and posting rules live
+1. Ask where the user's Instagram drafts, media, and posting rules already live
 2. Check `sfeed --version`
 3. If needed, install `sfeed`
 4. Run `sfeed status`
@@ -43,6 +43,8 @@ Meta setup help:
 - posting now is free, hosted scheduling is paid
 
 ## Practical example: review and post a launch image
+
+The paths below are examples only. Use the user's actual files and folders.
 
 User request:
 

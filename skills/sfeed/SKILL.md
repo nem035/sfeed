@@ -4,9 +4,9 @@ description: >-
   Use this skill when the user wants to post or schedule content on Facebook
   Pages or Instagram with sfeed, especially from local drafts, media files, or
   agent-driven workflows. Guide first-time setup, ask where posts and media
-  should live, install sfeed if it is missing, connect Meta accounts with sfeed
-  auth facebook, inspect Pages and Instagram accounts, and use the CLI or MCP
-  tools to publish or schedule work after approval.
+  already live, install sfeed if it is missing, connect Meta accounts with
+  sfeed auth facebook, inspect Pages and Instagram accounts, and use the CLI or
+  MCP tools to publish or schedule work after approval.
 ---
 
 # sfeed
@@ -29,11 +29,11 @@ Then the agent should ask the setup questions, install what is needed, connect M
 
 Before posting, discover the user's workflow:
 
-1. Ask where posts, media, and rules should live
+1. Ask where posts, media, and rules already live
 2. Ask whether they want Facebook, Instagram, or both
 3. Ask whether they want to post now, schedule for later, or both
 4. Ask whether every post should be shown for approval before publishing
-5. Create or recommend a simple local folder shape when the user does not already have one
+5. Adapt to the user's existing files and only suggest a simple folder shape if they ask for one
 
 Then check the machine and account state:
 
@@ -76,6 +76,8 @@ Use the CLI directly by default. Add MCP only when the agent client supports str
 7. If scheduled, inspect the queue with `sfeed schedule status` or `sfeed schedule open`
 
 ## Practical example: post from a local draft folder
+
+The paths below are examples only. Use the user's actual files and folders.
 
 User request:
 

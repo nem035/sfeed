@@ -3,10 +3,10 @@ name: facebook-posting
 description: >-
   Use this skill when the user wants to publish or schedule Facebook Page posts
   with sfeed. Check that sfeed is installed, run sfeed status, use sfeed pages
-  when more than one Page is connected, ask where drafts and media live, show
-  the post and destination before publishing, and handle Facebook post shapes
-  such as text-only posts, single-image posts, multi-image posts, and
-  single-video posts.
+  when more than one Page is connected, ask where drafts and media already
+  live, show the post and destination before publishing, and handle Facebook
+  post shapes such as text-only posts, single-image posts, multi-image posts,
+  and single-video posts.
 ---
 
 # Facebook Posting With sfeed
@@ -15,7 +15,7 @@ Use this skill when the task is specifically about posting to Facebook Pages wit
 
 ## Install and setup
 
-1. Ask where the user's Facebook drafts, media, and posting rules live
+1. Ask where the user's Facebook drafts, media, and posting rules already live
 2. Check `sfeed --version`
 3. If needed, install `sfeed`
 4. Run `sfeed status`
@@ -30,6 +30,8 @@ Important constraints:
 - posting now is free, hosted scheduling is paid
 
 ## Practical example: post a reviewed draft to a specific Page
+
+The paths below are examples only. Use the user's actual files and folders.
 
 User request:
 

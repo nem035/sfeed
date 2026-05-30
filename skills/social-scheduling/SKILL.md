@@ -15,7 +15,7 @@ Use this skill when the task is queue management or scheduled publishing with `s
 
 ## Install and setup
 
-1. Ask where scheduled post drafts, media, and rules live
+1. Ask where scheduled post drafts, media, and rules already live
 2. Check `sfeed --version`
 3. If needed, install `sfeed`
 4. Run `sfeed status`
@@ -43,6 +43,8 @@ sfeed schedule cancel <id>
 ```
 
 ## Practical example: schedule a Facebook update and review the queue
+
+The examples below use placeholder content and account names. Use the user's actual files, accounts, and timezone.
 
 User request:
 

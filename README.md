@@ -16,7 +16,7 @@ Most of the product lives at [sfeed.dev](https://sfeed.dev).
 ```text
 Read https://sfeed.dev and help me set up AI-powered social posting.
 
-Ask me where my posts, media, and rules should live. Install sfeed if needed, connect my Meta accounts, inspect my Facebook Pages and Instagram accounts, and create a simple workflow I can keep using.
+Ask me where my posts, media, and rules already live. Install sfeed if needed, connect my Meta accounts, inspect my Facebook Pages and Instagram accounts, and adapt to the workflow I already use.
 
 Before publishing anything, show me the post, the account it will publish to, and whether it will post now or be scheduled.
 ```
@@ -34,18 +34,11 @@ That is the main flow. The agent can run the `sfeed` CLI directly. Add MCP when 
 
 If you only want to post to Instagram, the setup is still `sfeed auth facebook`. Meta requires a professional Instagram account linked to a Facebook Page for Instagram publishing access. After setup, you can still post only to Instagram.
 
-## Local workflow
+## Use any local workflow
 
-```text
-social/
-  rules.md
-  queue/
-    2026-04-15-launch.md
-  media/
-    launch-card.jpg
-```
+Your files can be anywhere: a repo, a notes folder, a calendar export, Markdown drafts, JSON, CSV, images in `Downloads`, or a project-specific content directory.
 
-Your files stay local. Your agent reads them. `sfeed` handles auth, posting, scheduling, previews, and the hosted queue.
+Your files stay local. Your agent reads whatever structure you already use. `sfeed` handles auth, posting, scheduling, previews, and the hosted queue.
 
 ## Manual quick start
 
@@ -128,6 +121,8 @@ Each skill is in `skills/<name>/SKILL.md`.
 Skills describe how to use `sfeed` with agents. They do not describe private deployment details.
 
 ## Practical examples
+
+These paths are examples only. The agent should use the files and folders the user already has.
 
 ```bash
 sfeed status
