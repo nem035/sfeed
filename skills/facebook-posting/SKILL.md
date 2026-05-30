@@ -3,9 +3,10 @@ name: facebook-posting
 description: >-
   Use this skill when the user wants to publish or schedule Facebook Page posts
   with sfeed. Check that sfeed is installed, run sfeed status, use sfeed pages
-  when more than one Page is connected, and handle Facebook post shapes such as
-  text-only posts, single-image posts, multi-image posts, and single-video
-  posts.
+  when more than one Page is connected, ask where drafts and media live, show
+  the post and destination before publishing, and handle Facebook post shapes
+  such as text-only posts, single-image posts, multi-image posts, and
+  single-video posts.
 ---
 
 # Facebook Posting With sfeed
@@ -14,16 +15,19 @@ Use this skill when the task is specifically about posting to Facebook Pages wit
 
 ## Install and setup
 
-1. Check `sfeed --version`
-2. If needed, install `sfeed`
-3. Run `sfeed status`
-4. If Meta is not connected, run `sfeed auth facebook`
+1. Ask where the user's Facebook drafts, media, and posting rules live
+2. Check `sfeed --version`
+3. If needed, install `sfeed`
+4. Run `sfeed status`
+5. If Meta is not connected, run `sfeed auth facebook`
+6. Run `sfeed pages` when page choice is ambiguous
 
 Important constraints:
 
 - `sfeed` posts to Facebook Pages, not personal profiles
 - if more than one Page is connected, make page choice explicit
 - Facebook supports text-only, single-image, multi-image, and single-video posts
+- posting now is free, hosted scheduling is paid
 
 ## Practical example: post a reviewed draft to a specific Page
 
@@ -45,7 +49,8 @@ sfeed post "Launch day. v0.1.3 is live." \
 Agent behavior:
 
 - read the local draft first
-- ask for approval if the user expects review
+- show the final copy, media, and Page before publishing
+- ask for approval before posting
 - use `sfeed pages` before posting if page selection is ambiguous
 
 ## Practical example: post multiple images to Facebook

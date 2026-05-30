@@ -3,8 +3,9 @@ name: social-scheduling
 description: >-
   Use this skill when the user wants to schedule, inspect, preview, reschedule,
   duplicate, or cancel social posts with sfeed. Verify that sfeed is installed,
-  run sfeed status, confirm hosted scheduling is available, and manage the queue
-  with the schedule commands while keeping timezone handling and Instagram media
+  run sfeed status, explain that posting now is free and hosted scheduling is
+  paid, confirm hosted scheduling is available, and manage the queue with the
+  schedule commands while keeping timezone handling and Instagram media
   requirements explicit.
 ---
 
@@ -14,13 +15,15 @@ Use this skill when the task is queue management or scheduled publishing with `s
 
 ## Install and setup
 
-1. Check `sfeed --version`
-2. If needed, install `sfeed`
-3. Run `sfeed status`
-4. Confirm hosted scheduling is available
+1. Ask where scheduled post drafts, media, and rules live
+2. Check `sfeed --version`
+3. If needed, install `sfeed`
+4. Run `sfeed status`
+5. Confirm hosted scheduling is available
 
 Important setup notes:
 
+- posting now is free
 - hosted scheduling requires an active subscription
 - queue commands show times in the user's local timezone
 - Instagram scheduling still requires a professional Instagram account linked to a Facebook Page
@@ -96,6 +99,7 @@ sfeed schedule cancel <old-id>
 - make the target timezone explicit before scheduling
 - keep page choice explicit when more than one Page is connected
 - inspect the queue before mutating it when the user references an older job by description rather than exact ID
+- show the content, destination, scheduled time, and media before creating or changing a scheduled post
 - open previews when the user wants a final visual check
 
 ## References

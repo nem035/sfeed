@@ -3,23 +3,42 @@ name: sfeed
 description: >-
   Use this skill when the user wants to post or schedule content on Facebook
   Pages or Instagram with sfeed, especially from local drafts, media files, or
-  MCP workflows. Install sfeed if it is missing, run sfeed status, connect Meta
-  accounts with sfeed auth facebook, use sfeed pages when more than one Page is
-  connected, and use sfeed post or queue commands to publish or schedule work.
+  agent-driven workflows. Guide first-time setup, ask where posts and media
+  should live, install sfeed if it is missing, connect Meta accounts with sfeed
+  auth facebook, inspect Pages and Instagram accounts, and use the CLI or MCP
+  tools to publish or schedule work after approval.
 ---
 
 # sfeed
 
-Use this skill when the task is actual posting, scheduling, queue inspection, or MCP setup with `sfeed`.
+Use this skill when the task is onboarding, posting, scheduling, queue inspection, or MCP setup with `sfeed`.
 
 Do not use this skill for generic copywriting, social strategy, or analytics unless the task also includes publishing with `sfeed`.
 
-## Install and setup
+## Onboarding promise
 
-Before doing anything else:
+The user should be able to say:
 
-1. Check whether `sfeed` is installed: `sfeed --version`
-2. If it is missing, install it:
+```text
+Read https://sfeed.dev and help me set up AI-powered social posting.
+```
+
+Then the agent should ask the setup questions, install what is needed, connect Meta, inspect accounts, and show a post preview before publishing anything.
+
+## First-run workflow
+
+Before posting, discover the user's workflow:
+
+1. Ask where posts, media, and rules should live
+2. Ask whether they want Facebook, Instagram, or both
+3. Ask whether they want to post now, schedule for later, or both
+4. Ask whether every post should be shown for approval before publishing
+5. Create or recommend a simple local folder shape when the user does not already have one
+
+Then check the machine and account state:
+
+1. Run `sfeed --version`
+2. If `sfeed` is missing, install it:
 
 ```bash
 curl -fsSL https://sfeed.dev/install.sh | sh
@@ -33,7 +52,9 @@ npm install -g @sfeed/cli
 
 3. Run `sfeed status`
 4. If Meta is not connected, run `sfeed auth facebook`
-5. If the task will be handled through an agent client, run `sfeed mcp`
+5. Run `sfeed pages` when page choice is ambiguous
+
+Use the CLI directly by default. Add MCP only when the agent client supports structured tools and MCP improves the workflow.
 
 ## Important constraints
 
@@ -47,11 +68,12 @@ npm install -g @sfeed/cli
 ## Default workflow
 
 1. Inspect setup with `sfeed status`
-2. If more than one Page is connected, run `sfeed pages`
-3. Read the user's local drafts and media files
-4. Draft or confirm the final post content
-5. Post now with `sfeed post ...` or schedule it with `--at`
-6. If scheduled, inspect the queue with `sfeed schedule status` or `sfeed schedule open`
+2. Inspect Pages with `sfeed pages` when needed
+3. Read the user's local drafts, media, and rules
+4. Show the final content, media, destination account, and timing
+5. Ask for approval before publishing unless the user already gave explicit approval
+6. Post now with `sfeed post ...` or schedule with `--at`
+7. If scheduled, inspect the queue with `sfeed schedule status` or `sfeed schedule open`
 
 ## Practical example: post from a local draft folder
 
@@ -73,10 +95,10 @@ sfeed post "Launch day. v0.1.3 is live." \
 Agent behavior:
 
 - read the draft and rules first
-- ask for approval before posting if the user expects review
+- ask for approval before posting
 - select the page explicitly when more than one Page is connected
 
-## Practical example: use sfeed through MCP
+## Practical example: use sfeed through MCP when helpful
 
 User request:
 
@@ -89,7 +111,7 @@ sfeed status
 sfeed mcp
 ```
 
-After the MCP server is running, the agent should:
+After MCP is configured, the agent should:
 
 1. check `sfeed_status`
 2. call `sfeed_pages` if more than one Page is connected
@@ -117,6 +139,12 @@ sfeed schedule calendar
 ```
 
 Use `sfeed dashboard` or `sfeed calendar` as shortcuts for opening the hosted queue UI.
+
+## Pricing behavior
+
+- Posting now is free
+- MCP usage is free
+- Hosted scheduling is paid because sfeed keeps and runs the scheduled post later
 
 ## References
 

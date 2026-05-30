@@ -1,8 +1,8 @@
-# sfeed Agent Skills
+# sfeed
 
-A collection of skills for AI agents that post to Facebook Pages and Instagram with `sfeed`.
+Let your AI agent post to Facebook Pages and Instagram with `sfeed`.
 
-`sfeed` is a CLI and MCP server for posting to Facebook Pages and Instagram with AI agents.
+Keep your drafts, media, and rules where they already live. Give your agent one prompt, connect Meta in the browser, review the post, and publish. Posting now is free. Pay only when you want scheduled posts to run later.
 
 Most of the product lives at [sfeed.dev](https://sfeed.dev).
 
@@ -11,14 +11,26 @@ Most of the product lives at [sfeed.dev](https://sfeed.dev).
 - Pricing: [sfeed.dev/pricing](https://sfeed.dev/pricing)
 - AI guide: [sfeed.dev/post-to-social-media-with-ai](https://sfeed.dev/post-to-social-media-with-ai)
 
-## How to post to social media with AI
+## Give your AI this prompt
 
-1. Install `sfeed`
-2. Run `sfeed auth facebook`
-3. Run `sfeed mcp`
-4. Tell your agent to read your local files and use `sfeed` to publish
+```text
+Read https://sfeed.dev and help me set up AI-powered social posting.
 
-You can keep your posts, media, prompts, and schedules however you want on your own machine. Then you tell Claude, Codex, OpenCode, or another MCP client to use sfeed to publish them according to your rules.
+Ask me where my posts, media, and rules should live. Install sfeed if needed, connect my Meta accounts, inspect my Facebook Pages and Instagram accounts, and create a simple workflow I can keep using.
+
+Before publishing anything, show me the post, the account it will publish to, and whether it will post now or be scheduled.
+```
+
+That is the main flow. The agent can run the `sfeed` CLI directly. Add MCP when structured tools make the workflow cleaner.
+
+## What the user gets
+
+- Drafts, media, and rules stay on the user's machine
+- The agent asks setup questions before creating a workflow
+- Meta auth happens in the browser
+- The user reviews the post and destination before publishing
+- Posting now is free
+- Hosted scheduling is paid because sfeed runs the post later
 
 If you only want to post to Instagram, the setup is still `sfeed auth facebook`. Meta requires a professional Instagram account linked to a Facebook Page for Instagram publishing access. After setup, you can still post only to Instagram.
 
@@ -35,18 +47,28 @@ social/
 
 Your files stay local. Your agent reads them. `sfeed` handles auth, posting, scheduling, previews, and the hosted queue.
 
+## Manual quick start
+
+```bash
+curl -fsSL https://sfeed.dev/install.sh | sh
+sfeed auth facebook
+sfeed status
+```
+
+Requires Node.js 20+.
+
 ## Available Skills
 
 ### sfeed
 
-The main posting and MCP workflow.
+The main onboarding, posting, and scheduling workflow.
 
 Use when:
 
-- the user wants to post with `sfeed`
-- the user wants to run `sfeed mcp`
-- the user wants an agent to read local files and publish or schedule work
+- the user wants an agent to set up sfeed
+- the user wants an agent to read local files and publish or schedule posts
 - the task spans Facebook, Instagram, and scheduling together
+- the user wants MCP, CLI usage, or both
 
 ### facebook-posting
 
@@ -103,37 +125,7 @@ npx skills add nem035/sfeed --skill social-scheduling
 
 Each skill is in `skills/<name>/SKILL.md`.
 
-Skills describe how to use `sfeed`, not how `sfeed` is deployed.
-
-## Install
-
-Use the install script:
-
-```bash
-curl -fsSL https://sfeed.dev/install.sh | sh
-```
-
-Or install from npm:
-
-```bash
-npm install -g @sfeed/cli
-```
-
-Requires Node.js 20+.
-
-## Quick start
-
-```bash
-sfeed auth facebook
-sfeed mcp
-```
-
-That connects your accounts and starts the MCP server.
-
-For Instagram posting, your Instagram account must be a professional account linked to a Facebook Page. Meta setup help:
-
-- https://www.facebook.com/help/instagram/138925576505882
-- https://www.facebook.com/help/1148909221857370
+Skills describe how to use `sfeed` with agents. They do not describe private deployment details.
 
 ## Practical examples
 
@@ -167,9 +159,11 @@ sfeed schedule cancel <id>
 
 Facebook supports text-only, single-image, multi-image, and single-video posts. Instagram supports single-image, single-video, and image-only carousels up to 10 items.
 
-## MCP example
+## MCP is optional
 
-Claude Desktop config:
+Agents with terminal access can use the CLI directly. Add MCP when the agent client supports structured tools and you want repeatable status, page, post, and schedule calls.
+
+Claude Desktop example:
 
 ```json
 {

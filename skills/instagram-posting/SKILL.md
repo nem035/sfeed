@@ -3,9 +3,10 @@ name: instagram-posting
 description: >-
   Use this skill when the user wants to publish or schedule Instagram posts with
   sfeed. Check that sfeed is installed, verify that the Instagram account is a
-  professional account linked to a Facebook Page, ensure media is present, and
-  handle Instagram-specific post shapes such as single-image posts, single-video
-  posts, and image-only carousels.
+  professional account linked to a Facebook Page, ask where drafts and media
+  live, ensure media is present, show the caption, media, and destination before
+  publishing, and handle Instagram-specific post shapes such as single-image
+  posts, single-video posts, and image-only carousels.
 ---
 
 # Instagram Posting With sfeed
@@ -14,10 +15,12 @@ Use this skill when the task is specifically about Instagram publishing with `sf
 
 ## Install and setup
 
-1. Check `sfeed --version`
-2. If needed, install `sfeed`
-3. Run `sfeed status`
-4. If Instagram is not available yet, run `sfeed auth facebook`
+1. Ask where the user's Instagram drafts, media, and posting rules live
+2. Check `sfeed --version`
+3. If needed, install `sfeed`
+4. Run `sfeed status`
+5. If Instagram is not available yet, run `sfeed auth facebook`
+6. Run `sfeed pages` when page choice is ambiguous
 
 For Instagram posting with `sfeed`, the account must be:
 
@@ -37,6 +40,7 @@ Meta setup help:
 - carousels must be image-only
 - carousels support up to 10 items
 - single feed videos publish as Reels
+- posting now is free, hosted scheduling is paid
 
 ## Practical example: review and post a launch image
 
@@ -73,7 +77,8 @@ sfeed post "Found the Easter egg hunt photo from 1988. The color work is live." 
 Agent behavior:
 
 - check that every carousel item is an image
-- keep the caption and media selection visible for approval if the user expects review
+- keep the caption, media selection, and destination visible for approval
+- ask for approval before posting
 - fail early if the chosen Page has no linked Instagram account
 
 ## Practical example: schedule an Instagram post
