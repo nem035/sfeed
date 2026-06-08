@@ -17,7 +17,7 @@ Use this skill when the task is queue management or scheduled publishing with `s
 
 1. Ask where scheduled post drafts, media, and rules already live
 2. Check `sfeed --version`
-3. If needed, install `sfeed`
+3. If needed, install `sfeed` with `curl -fsSL https://sfeed.dev/install.sh | sh`
 4. Run `sfeed status`
 5. Confirm hosted scheduling is available
 

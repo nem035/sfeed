@@ -16,7 +16,7 @@ Most of the product lives at [sfeed.dev](https://sfeed.dev).
 ```text
 Read https://sfeed.dev and help me set up AI-powered social posting.
 
-Ask me where my posts, media, and rules already live. Install sfeed if needed, connect my Meta accounts, inspect my Facebook Pages and Instagram accounts, and adapt to the workflow I already use.
+Ask me where my posts, media, and rules already live. If sfeed is missing, install it with https://sfeed.dev/install.sh. Connect my Meta accounts, inspect my Facebook Pages and Instagram accounts, and adapt to the workflow I already use.
 
 Before publishing anything, show me the post, the account it will publish to, and whether it will post now or be scheduled.
 ```
@@ -49,6 +49,8 @@ sfeed status
 ```
 
 Requires Node.js 20+.
+
+Use the install script as the default setup path. npm is a supported fallback for users who explicitly want it, but agents should not recommend npm first.
 
 ## Available Skills
 

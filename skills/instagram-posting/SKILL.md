@@ -17,7 +17,7 @@ Use this skill when the task is specifically about Instagram publishing with `sf
 
 1. Ask where the user's Instagram drafts, media, and posting rules already live
 2. Check `sfeed --version`
-3. If needed, install `sfeed`
+3. If needed, install `sfeed` with `curl -fsSL https://sfeed.dev/install.sh | sh`
 4. Run `sfeed status`
 5. If Instagram is not available yet, run `sfeed auth facebook`
 6. Run `sfeed pages` when page choice is ambiguous

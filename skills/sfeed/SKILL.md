@@ -44,11 +44,7 @@ Then check the machine and account state:
 curl -fsSL https://sfeed.dev/install.sh | sh
 ```
 
-or
-
-```bash
-npm install -g @sfeed/cli
-```
+Use the install script by default. It installs a managed local `sfeed` command without touching global npm packages when a direct release is available for the machine. Use `npm install -g @sfeed/cli` only if the install script is blocked or the user explicitly asks for npm.
 
 3. Run `sfeed status`
 4. If Meta is not connected, run `sfeed auth facebook`
