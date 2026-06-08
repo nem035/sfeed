@@ -6,7 +6,7 @@ description: >-
   professional account linked to a Facebook Page, ask where drafts and media
   already live, ensure media is present, show the caption, media, and
   destination before publishing, and handle Instagram-specific post shapes such
-  as single-image posts, single-video posts, and image-only carousels.
+  as feed posts, Reels, Stories, and image-only carousels.
 ---
 
 # Instagram Posting With sfeed
@@ -39,7 +39,8 @@ Meta setup help:
 - text-only Instagram posts do not work
 - carousels must be image-only
 - carousels support up to 10 items
-- single feed videos publish as Reels
+- use `--kind reel` for Reels, `--kind story` for Stories, and `--kind carousel` for carousels
+- when no kind is provided, a single video is treated as a Reel and multiple images are treated as a carousel
 - posting now is free, hosted scheduling is paid
 
 ## Practical example: review and post a launch image
@@ -73,6 +74,7 @@ Useful command flow:
 sfeed post "Found the Easter egg hunt photo from 1988. The color work is live." \
   --to instagram \
   --page "Made To Delight" \
+  --kind carousel \
   --media ./content/media/restoration/1.jpg,./content/media/restoration/2.jpg,./content/media/restoration/3.jpg
 ```
 
@@ -95,6 +97,7 @@ Useful command flow:
 sfeed post "Teaser drop next week." \
   --to instagram \
   --page "Lound" \
+  --kind reel \
   --media ./assets/teaser.mp4 \
   --at "2026-04-21T13:30:00Z"
 ```
@@ -104,6 +107,22 @@ After scheduling, inspect with:
 ```bash
 sfeed schedule status
 sfeed schedule preview <id>
+```
+
+## Practical example: post an Instagram Story
+
+User request:
+
+> Post this behind-the-scenes image as an Instagram Story after I approve it.
+
+Useful command flow:
+
+```bash
+sfeed post "Behind the scenes." \
+  --to instagram \
+  --page "Lound" \
+  --kind story \
+  --media ./assets/story.jpg
 ```
 
 ## References

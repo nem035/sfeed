@@ -70,7 +70,7 @@ Facebook Page posting workflow.
 Use when:
 
 - the user wants to post to a Facebook Page
-- the task involves Facebook-specific post shapes such as multi-image posts
+- the task involves Facebook-specific post shapes such as multi-image posts, Page Reels, or Page Stories
 - the user needs explicit page selection with `sfeed pages`
 
 ### instagram-posting
@@ -80,7 +80,7 @@ Instagram-specific publishing workflow.
 Use when:
 
 - the user wants to post to Instagram with `sfeed`
-- the task depends on media requirements, carousels, or Reels behavior
+- the task depends on media requirements, carousels, Reels, or Stories behavior
 - the user needs help with the professional-account and linked-Page requirement
 
 ### social-scheduling
@@ -136,7 +136,20 @@ sfeed post "Launch day. v0.1.3 is live." \
 sfeed post "Spring drop, 8 new pieces." \
   --to instagram \
   --page "Acme Robotics" \
+  --kind carousel \
   --media ./content/media/look-1.jpg,./content/media/look-2.jpg,./content/media/look-3.jpg
+
+sfeed post "Demo clip is live." \
+  --to instagram \
+  --page "Acme Robotics" \
+  --kind reel \
+  --media ./content/media/demo.mp4
+
+sfeed post "Quick behind-the-scenes update." \
+  --to facebook \
+  --page "Acme Robotics" \
+  --kind story \
+  --media ./content/media/story.jpg
 
 sfeed post "Tuesday product update" \
   --to facebook \
@@ -152,7 +165,7 @@ sfeed schedule duplicate <id>
 sfeed schedule cancel <id>
 ```
 
-Facebook supports text-only, single-image, multi-image, and single-video posts. Instagram supports single-image, single-video, and image-only carousels up to 10 items.
+Facebook supports feed posts, text-only posts, single-image posts, multi-image posts, single-video posts, Page Reels, and Page Stories. Instagram supports feed media, Reels, Stories, and image-only carousels up to 10 items. Use `--kind feed`, `--kind reel`, `--kind story`, or `--kind carousel` when the media shape alone is not clear.
 
 ## MCP is optional
 

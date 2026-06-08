@@ -28,6 +28,7 @@ Important setup notes:
 - queue commands show times in the user's local timezone
 - Instagram scheduling still requires a professional Instagram account linked to a Facebook Page
 - Instagram scheduling requires media
+- scheduled posts can use `--kind feed`, `--kind reel`, `--kind story`, or `--kind carousel`
 
 ## Core commands
 
@@ -76,6 +77,7 @@ Useful command flow:
 sfeed post "Friday teaser." \
   --to instagram \
   --page "Lound" \
+  --kind story \
   --media ./assets/teaser.jpg \
   --at "2026-04-17T18:00:00Z"
 

@@ -62,8 +62,9 @@ Use the CLI directly by default. Add MCP only when the agent client supports str
 - If more than one Page is connected, use `sfeed pages` and make page choice explicit
 - Instagram posting requires a professional Instagram account linked to a Facebook Page
 - Instagram requires media, text-only Instagram posts do not work
-- Facebook supports text-only, single-image, multi-image, and single-video posts
-- Instagram supports single-image, single-video, and image-only carousels up to 10 items
+- Facebook supports feed posts, text-only posts, single-image posts, multi-image posts, single-video posts, Page Reels, and Page Stories
+- Instagram supports feed media, Reels, Stories, and image-only carousels up to 10 items
+- Use `--kind feed`, `--kind reel`, `--kind story`, or `--kind carousel` when the media shape alone is not clear
 
 ## Default workflow
 
@@ -120,6 +121,15 @@ After MCP is configured, the agent should:
 3. confirm the Instagram account is available on the chosen Page
 4. show the caption draft
 5. call `sfeed_post` with the local media path after approval
+
+For Reels, Stories, or carousels, pass the explicit `kind` field to `sfeed_post`.
+
+CLI examples:
+
+```bash
+sfeed post "Demo clip is live." --to instagram --kind reel --media ./assets/demo.mp4
+sfeed post "Quick update." --to facebook --kind story --media ./assets/story.jpg
+```
 
 ## Practical example: schedule and review
 

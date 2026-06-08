@@ -6,7 +6,7 @@ description: >-
   when more than one Page is connected, ask where drafts and media already
   live, show the post and destination before publishing, and handle Facebook
   post shapes such as text-only posts, single-image posts, multi-image posts,
-  and single-video posts.
+  single-video posts, Page Reels, and Page Stories.
 ---
 
 # Facebook Posting With sfeed
@@ -26,7 +26,8 @@ Important constraints:
 
 - `sfeed` posts to Facebook Pages, not personal profiles
 - if more than one Page is connected, make page choice explicit
-- Facebook supports text-only, single-image, multi-image, and single-video posts
+- Facebook supports feed posts, text-only posts, single-image posts, multi-image posts, single-video posts, Page Reels, and Page Stories
+- Use `--kind reel` for Page Reels and `--kind story` for Page Stories
 - posting now is free, hosted scheduling is paid
 
 ## Practical example: post a reviewed draft to a specific Page
@@ -68,6 +69,32 @@ sfeed post "Found the Easter egg hunt photo from 1988. The restored set is live.
   --to facebook \
   --page "Made To Delight" \
   --media ./content/media/restoration/1.jpg,./content/media/restoration/2.jpg,./content/media/restoration/3.jpg
+```
+
+## Practical example: post a Facebook Page Reel or Story
+
+User request:
+
+> Publish this product demo as a Facebook Reel on the Acme Robotics page.
+
+Useful command flow:
+
+```bash
+sfeed post "New product demo is live." \
+  --to facebook \
+  --page "Acme Robotics" \
+  --kind reel \
+  --media ./content/media/demo.mp4
+```
+
+For Page Stories, use exactly one image or video:
+
+```bash
+sfeed post "Behind the scenes today." \
+  --to facebook \
+  --page "Acme Robotics" \
+  --kind story \
+  --media ./content/media/story.jpg
 ```
 
 ## Practical example: schedule a Facebook Page update
