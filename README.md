@@ -37,10 +37,15 @@ sfeed auth facebook
 For Codex:
 
 ```bash
-codex plugin marketplace add nem035/sfeed
+codex plugin marketplace add nem035/sfeed --sparse .agents/plugins --sparse plugins
 ```
 
-For Claude, add this repo as a plugin marketplace, then install the `sfeed` plugin.
+For Claude:
+
+```bash
+claude plugin marketplace add nem035/sfeed
+claude plugin install sfeed@sfeed
+```
 
 ## What the user gets
 

@@ -1,6 +1,5 @@
 {
   "name": "sfeed",
-  "displayName": "sfeed",
   "version": "0.2.1",
   "description": "Post and schedule Facebook Page and Instagram content through the sfeed CLI and MCP server.",
   "author": {

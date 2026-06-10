@@ -4,31 +4,15 @@
     "name": "Nemantic",
     "email": "support@sfeed.dev"
   },
+  "metadata": {
+    "description": "sfeed plugins for social posting workflows."
+  },
   "description": "sfeed plugins for social posting workflows.",
   "plugins": [
     {
       "name": "sfeed",
       "source": "./plugins/sfeed",
-      "displayName": "sfeed",
-      "description": "Post and schedule Facebook Page and Instagram content through the sfeed CLI and MCP server.",
-      "version": "0.2.1",
-      "author": {
-        "name": "Nemantic",
-        "email": "support@sfeed.dev"
-      },
-      "homepage": "https://sfeed.dev/docs/mcp",
-      "repository": "https://github.com/nem035/sfeed",
-      "license": "MIT",
-      "keywords": [
-        "sfeed",
-        "mcp",
-        "facebook",
-        "instagram",
-        "social-media",
-        "scheduling",
-        "ai-agents"
-      ],
-      "category": "productivity"
+      "description": "Post and schedule Facebook Page and Instagram content through the sfeed CLI and MCP server."
     }
   ]
 }
