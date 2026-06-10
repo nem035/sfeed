@@ -1,0 +1,20 @@
+{
+  "name": "sfeed",
+  "interface": {
+    "displayName": "sfeed"
+  },
+  "plugins": [
+    {
+      "name": "sfeed",
+      "source": {
+        "source": "local",
+        "path": "./plugins/sfeed"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

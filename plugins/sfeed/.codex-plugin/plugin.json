@@ -1,0 +1,46 @@
+{
+  "name": "sfeed",
+  "version": "0.2.1",
+  "description": "Post and schedule Facebook Page and Instagram content through the sfeed CLI and MCP server.",
+  "author": {
+    "name": "Nemantic",
+    "email": "support@sfeed.dev",
+    "url": "https://nemantic.com"
+  },
+  "homepage": "https://sfeed.dev/docs/mcp",
+  "repository": "https://github.com/nem035/sfeed",
+  "license": "MIT",
+  "keywords": [
+    "sfeed",
+    "mcp",
+    "facebook",
+    "instagram",
+    "social-media",
+    "scheduling",
+    "ai-agents"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "sfeed",
+    "shortDescription": "Post and schedule social content from Codex.",
+    "longDescription": "sfeed gives Codex a local workflow for checking connected Facebook Pages and Instagram accounts, drafting posts, validating media, publishing now, and scheduling posts for later through the sfeed MCP server.",
+    "developerName": "Nemantic",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive",
+      "Write"
+    ],
+    "websiteURL": "https://sfeed.dev",
+    "privacyPolicyURL": "https://sfeed.dev/privacy",
+    "termsOfServiceURL": "https://sfeed.dev/terms",
+    "defaultPrompt": [
+      "Check my sfeed status.",
+      "Draft and dry-run a Facebook post.",
+      "Schedule an Instagram post with media."
+    ],
+    "brandColor": "#72FF70",
+    "composerIcon": "./assets/logo.png",
+    "logo": "./assets/logo.png"
+  },
+  "mcpServers": "./.mcp.json"
+}

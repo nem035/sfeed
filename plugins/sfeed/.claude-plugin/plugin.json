@@ -1,0 +1,25 @@
+{
+  "name": "sfeed",
+  "displayName": "sfeed",
+  "version": "0.2.1",
+  "description": "Post and schedule Facebook Page and Instagram content through the sfeed CLI and MCP server.",
+  "author": {
+    "name": "Nemantic",
+    "email": "support@sfeed.dev",
+    "url": "https://nemantic.com"
+  },
+  "homepage": "https://sfeed.dev/docs/mcp",
+  "repository": "https://github.com/nem035/sfeed",
+  "license": "MIT",
+  "keywords": [
+    "sfeed",
+    "mcp",
+    "facebook",
+    "instagram",
+    "social-media",
+    "scheduling",
+    "ai-agents"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json"
+}

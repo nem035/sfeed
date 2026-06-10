@@ -23,6 +23,25 @@ Before publishing anything, show me the post, the account it will publish to, an
 
 That is the main flow. The agent can run the `sfeed` CLI directly. Add MCP when structured tools make the workflow cleaner.
 
+## Agent plugins
+
+Codex and Claude can install the sfeed plugin from this repo. The plugin bundles the sfeed skill and the local `sfeed mcp` server entry.
+
+Users still need the local CLI and Meta auth state:
+
+```bash
+curl -fsSL https://sfeed.dev/install.sh | sh
+sfeed auth facebook
+```
+
+For Codex:
+
+```bash
+codex plugin marketplace add nem035/sfeed
+```
+
+For Claude, add this repo as a plugin marketplace, then install the `sfeed` plugin.
+
 ## What the user gets
 
 - Drafts, media, and rules stay on the user's machine
@@ -121,6 +140,8 @@ npx skills add nem035/sfeed --skill social-scheduling
 Each skill is in `skills/<name>/SKILL.md`.
 
 Skills describe how to use `sfeed` with agents. They do not describe private deployment details.
+
+The installable Codex and Claude plugin package lives in `plugins/sfeed`.
 
 ## Practical examples
 

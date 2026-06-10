@@ -52,6 +52,8 @@ Use the install script by default. It installs a managed local `sfeed` command w
 
 Use the CLI directly by default. Add MCP only when the agent client supports structured tools and MCP improves the workflow.
 
+If the agent supports installable plugins, prefer the sfeed plugin from this repo. The plugin bundles this skill and the local `sfeed mcp` server entry. The user still needs `sfeed` installed locally and authenticated with `sfeed auth facebook`.
+
 ## Important constraints
 
 - Facebook posting goes to Facebook Pages, not personal profiles
@@ -116,7 +118,8 @@ After MCP is configured, the agent should:
 2. call `sfeed_pages` if more than one Page is connected
 3. confirm the Instagram account is available on the chosen Page
 4. show the caption draft
-5. call `sfeed_post` with the local media path after approval
+5. call `sfeed_post` with `dry_run: true` when validation is useful
+6. call `sfeed_post` with the local media path after approval
 
 For Reels, Stories, or carousels, pass the explicit `kind` field to `sfeed_post`.
 
