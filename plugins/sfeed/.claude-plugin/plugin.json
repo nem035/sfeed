@@ -1,13 +1,13 @@
 {
   "name": "sfeed",
-  "version": "0.2.1",
-  "description": "Post and schedule Facebook Page and Instagram content through the sfeed CLI and MCP server.",
+  "version": "0.2.2",
+  "description": "Turn rough notes, launch updates, event details, blog posts, and client briefs into Facebook and Instagram posts that Claude Code can publish or schedule through the local sfeed CLI and MCP server.",
   "author": {
     "name": "Nemantic",
     "email": "support@sfeed.dev",
     "url": "https://nemantic.com"
   },
-  "homepage": "https://sfeed.dev/docs/mcp",
+  "homepage": "https://sfeed.dev/docs/claude-code",
   "repository": "https://github.com/nem035/sfeed",
   "license": "MIT",
   "keywords": [

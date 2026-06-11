@@ -1,7 +1,7 @@
 {
   "name": "sfeed",
-  "version": "0.2.1",
-  "description": "Post and schedule Facebook Page and Instagram content through the sfeed CLI and MCP server.",
+  "version": "0.2.2",
+  "description": "Turn rough notes, launch updates, event details, blog posts, and client briefs into Facebook and Instagram posts that Codex can publish or schedule through the local sfeed CLI and MCP server.",
   "author": {
     "name": "Nemantic",
     "email": "support@sfeed.dev",

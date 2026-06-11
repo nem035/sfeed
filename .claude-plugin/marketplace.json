@@ -12,7 +12,7 @@
     {
       "name": "sfeed",
       "source": "./plugins/sfeed",
-      "description": "Post and schedule Facebook Page and Instagram content through the sfeed CLI and MCP server."
+      "description": "Turn rough notes, launch updates, event details, blog posts, and client briefs into Facebook and Instagram posts that Claude Code can publish or schedule through the local sfeed CLI and MCP server."
     }
   ]
 }
