@@ -26,7 +26,7 @@ Important setup notes:
 - posting now is free
 - hosted scheduling requires an active subscription
 - queue commands show times in the user's local timezone
-- Instagram scheduling still requires a professional Instagram account linked to a Facebook Page
+- Instagram scheduling requires a directly connected professional Business or Creator account, but not a Facebook Page
 - Instagram scheduling requires media
 - scheduled posts can use `--kind feed`, `--kind reel`, `--kind story`, or `--kind carousel`
 
@@ -76,7 +76,7 @@ Useful command flow:
 ```bash
 sfeed post "Friday teaser." \
   --to instagram \
-  --page "Lound" \
+  --page "@lound.ai" \
   --kind story \
   --media ./assets/teaser.jpg \
   --at "2026-04-17T18:00:00Z"
@@ -101,7 +101,7 @@ sfeed schedule cancel <old-id>
 ## Agent behavior
 
 - make the target timezone explicit before scheduling
-- keep page choice explicit when more than one Page is connected
+- keep destination choice explicit when more than one matching account is connected
 - inspect the queue before mutating it when the user references an older job by description rather than exact ID
 - show the content, destination, scheduled time, and media before creating or changing a scheduled post
 - open previews when the user wants a final visual check

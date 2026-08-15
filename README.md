@@ -31,8 +31,14 @@ Users still need the local CLI and Meta auth state:
 
 ```bash
 curl -fsSL https://sfeed.dev/install.sh | sh
-sfeed auth facebook
+sfeed auth facebook connect
+sfeed auth instagram connect
+sfeed destinations
 ```
+
+Run the connection command only for each platform the user wants. Facebook
+connects selected Pages. Instagram connects a professional Business or Creator
+account directly and does not require a Facebook Page.
 
 For Codex:
 
@@ -56,7 +62,9 @@ claude plugin install sfeed@sfeed
 - Posting now is free
 - Hosted scheduling is paid because sfeed runs the post later
 
-If you only want to post to Instagram, the setup is still `sfeed auth facebook`. Meta requires a professional Instagram account linked to a Facebook Page for Instagram publishing access. After setup, you can still post only to Instagram.
+Facebook and Instagram connections are independent. An Instagram-only user runs
+`sfeed auth instagram connect`; a Facebook-only user runs
+`sfeed auth facebook connect`; a user who wants both runs both commands.
 
 ## Use any local workflow
 
@@ -68,9 +76,13 @@ Your files stay local. Your agent reads whatever structure you already use. `sfe
 
 ```bash
 curl -fsSL https://sfeed.dev/install.sh | sh
-sfeed auth facebook
+sfeed auth facebook connect
+sfeed auth instagram connect
 sfeed status
+sfeed destinations
 ```
+
+Only connect the platforms the user wants.
 
 Requires Node.js 20+.
 
@@ -97,7 +109,7 @@ Use when:
 
 - the user wants to post to a Facebook Page
 - the task involves Facebook-specific post shapes such as multi-image posts, Page Reels, or Page Stories
-- the user needs explicit page selection with `sfeed pages`
+- the user needs explicit Page selection with `sfeed destinations`
 
 ### instagram-posting
 
@@ -107,7 +119,7 @@ Use when:
 
 - the user wants to post to Instagram with `sfeed`
 - the task depends on media requirements, carousels, Reels, or Stories behavior
-- the user needs help with the professional-account and linked-Page requirement
+- the user needs help connecting a professional Business or Creator account directly
 
 ### social-scheduling
 
@@ -154,7 +166,7 @@ These paths are examples only. The agent should use the files and folders the us
 
 ```bash
 sfeed status
-sfeed pages
+sfeed destinations
 
 sfeed post "Launch day. v0.1.3 is live." \
   --to facebook \
@@ -163,13 +175,13 @@ sfeed post "Launch day. v0.1.3 is live." \
 
 sfeed post "Spring drop, 8 new pieces." \
   --to instagram \
-  --page "Acme Robotics" \
+  --page "@acme" \
   --kind carousel \
   --media ./content/media/look-1.jpg,./content/media/look-2.jpg,./content/media/look-3.jpg
 
 sfeed post "Demo clip is live." \
   --to instagram \
-  --page "Acme Robotics" \
+  --page "@acme" \
   --kind reel \
   --media ./content/media/demo.mp4
 
@@ -212,7 +224,8 @@ Claude Desktop example:
 }
 ```
 
-Once connected, the agent can inspect status, choose the right Page, post immediately, schedule posts, and manage the queue.
+Once connected, the agent can inspect status, choose the right publishing
+destination, post immediately, schedule posts, and manage the queue.
 
 Full MCP docs: [sfeed.dev/docs/mcp](https://sfeed.dev/docs/mcp)
 

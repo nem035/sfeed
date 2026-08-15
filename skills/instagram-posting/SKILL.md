@@ -3,10 +3,11 @@ name: instagram-posting
 description: >-
   Use this skill when the user wants to publish or schedule Instagram posts with
   sfeed. Check that sfeed is installed, verify that the Instagram account is a
-  professional account linked to a Facebook Page, ask where drafts and media
-  already live, ensure media is present, show the caption, media, and
-  destination before publishing, and handle Instagram-specific post shapes such
-  as feed posts, Reels, Stories, and image-only carousels.
+  professional Business or Creator account, connect it directly through
+  Instagram Login, ask where drafts and media already live, ensure media is
+  present, show the caption, media, and destination before publishing, and
+  handle Instagram-specific post shapes such as feed posts, Reels, Stories, and
+  image-only carousels.
 ---
 
 # Instagram Posting With sfeed
@@ -19,19 +20,16 @@ Use this skill when the task is specifically about Instagram publishing with `sf
 2. Check `sfeed --version`
 3. If needed, install `sfeed` with `curl -fsSL https://sfeed.dev/install.sh | sh`
 4. Run `sfeed status`
-5. If Instagram is not available yet, run `sfeed auth facebook`
-6. Run `sfeed pages` when page choice is ambiguous
+5. If Instagram is not connected, run `sfeed auth instagram connect`
+6. Run `sfeed destinations` when account choice is ambiguous
 
-For Instagram posting with `sfeed`, the account must be:
-
-- a professional Instagram account
-- linked to a Facebook Page
+For Instagram posting with `sfeed`, the account must be a professional Business
+or Creator account. It connects directly through Instagram Login and does not
+require a Facebook Page or business portfolio.
 
 Meta setup help:
 
 - https://www.facebook.com/help/instagram/138925576505882
-- https://www.facebook.com/help/1148909221857370
-- https://www.facebook.com/help/570895513091465
 
 ## Instagram-specific constraints
 
@@ -49,16 +47,16 @@ The paths below are examples only. Use the user's actual files and folders.
 
 User request:
 
-> Read `./social/queue/2026-04-15-launch.md`, use `./social/media/launch-card.jpg`, show me the caption first, then post it to Instagram on the Lound page.
+> Read `./social/queue/2026-04-15-launch.md`, use `./social/media/launch-card.jpg`, show me the caption first, then post it to the @lound.ai Instagram account.
 
 Useful command flow:
 
 ```bash
 sfeed status
-sfeed pages
+sfeed destinations
 sfeed post "Launch day. v0.1.3 is live." \
   --to instagram \
-  --page "Lound" \
+  --page "@lound.ai" \
   --media ./social/media/launch-card.jpg
 ```
 
@@ -73,7 +71,7 @@ Useful command flow:
 ```bash
 sfeed post "Found the Easter egg hunt photo from 1988. The color work is live." \
   --to instagram \
-  --page "Made To Delight" \
+  --page "@made.to.delight" \
   --kind carousel \
   --media ./content/media/restoration/1.jpg,./content/media/restoration/2.jpg,./content/media/restoration/3.jpg
 ```
@@ -83,7 +81,7 @@ Agent behavior:
 - check that every carousel item is an image
 - keep the caption, media selection, and destination visible for approval
 - ask for approval before posting
-- fail early if the chosen Page has no linked Instagram account
+- fail early if the chosen Instagram destination is not connected
 
 ## Practical example: schedule an Instagram post
 
@@ -96,7 +94,7 @@ Useful command flow:
 ```bash
 sfeed post "Teaser drop next week." \
   --to instagram \
-  --page "Lound" \
+  --page "@lound.ai" \
   --kind reel \
   --media ./assets/teaser.mp4 \
   --at "2026-04-21T13:30:00Z"
@@ -120,7 +118,7 @@ Useful command flow:
 ```bash
 sfeed post "Behind the scenes." \
   --to instagram \
-  --page "Lound" \
+  --page "@lound.ai" \
   --kind story \
   --media ./assets/story.jpg
 ```

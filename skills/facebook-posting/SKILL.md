@@ -2,7 +2,7 @@
 name: facebook-posting
 description: >-
   Use this skill when the user wants to publish or schedule Facebook Page posts
-  with sfeed. Check that sfeed is installed, run sfeed status, use sfeed pages
+  with sfeed. Check that sfeed is installed, run sfeed status, use sfeed destinations
   when more than one Page is connected, ask where drafts and media already
   live, show the post and destination before publishing, and handle Facebook
   post shapes such as text-only posts, single-image posts, multi-image posts,
@@ -19,8 +19,8 @@ Use this skill when the task is specifically about posting to Facebook Pages wit
 2. Check `sfeed --version`
 3. If needed, install `sfeed` with `curl -fsSL https://sfeed.dev/install.sh | sh`
 4. Run `sfeed status`
-5. If Meta is not connected, run `sfeed auth facebook`
-6. Run `sfeed pages` when page choice is ambiguous
+5. If Facebook is not connected, run `sfeed auth facebook connect`
+6. Run `sfeed destinations` when Page choice is ambiguous
 
 Important constraints:
 
@@ -42,7 +42,7 @@ Useful command flow:
 
 ```bash
 sfeed status
-sfeed pages
+sfeed destinations
 sfeed post "Launch day. v0.1.3 is live." \
   --to facebook \
   --page "Acme Robotics" \
@@ -54,7 +54,7 @@ Agent behavior:
 - read the local draft first
 - show the final copy, media, and Page before publishing
 - ask for approval before posting
-- use `sfeed pages` before posting if page selection is ambiguous
+- use `sfeed destinations` before posting if Page selection is ambiguous
 
 ## Practical example: post multiple images to Facebook
 

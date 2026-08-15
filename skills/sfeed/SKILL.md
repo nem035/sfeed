@@ -4,9 +4,9 @@ description: >-
   Use this skill when the user wants to post or schedule content on Facebook
   Pages or Instagram with sfeed, especially from local drafts, media files, or
   agent-driven workflows. Guide first-time setup, ask where posts and media
-  already live, install sfeed if it is missing, connect Meta accounts with
-  sfeed auth facebook, inspect Pages and Instagram accounts, and use the CLI or
-  MCP tools to publish or schedule work after approval.
+  already live, install sfeed if it is missing, connect Facebook or Instagram
+  independently, inspect publishing destinations, and use the CLI or MCP tools
+  to publish or schedule work after approval.
 ---
 
 # sfeed
@@ -47,18 +47,20 @@ curl -fsSL https://sfeed.dev/install.sh | sh
 Use the install script by default. It installs a managed local `sfeed` command without touching global npm packages when a direct release is available for the machine. Use `npm install -g @sfeed/cli` only if the install script is blocked or the user explicitly asks for npm.
 
 3. Run `sfeed status`
-4. If Meta is not connected, run `sfeed auth facebook`
-5. Run `sfeed pages` when page choice is ambiguous
+4. If Facebook is needed but disconnected, run `sfeed auth facebook connect`
+5. If Instagram is needed but disconnected, run `sfeed auth instagram connect`
+6. Run `sfeed destinations` and make the destination choice explicit when it is ambiguous
 
 Use the CLI directly by default. Add MCP only when the agent client supports structured tools and MCP improves the workflow.
 
-If the agent supports installable plugins, prefer the sfeed plugin from this repo. The plugin bundles this skill and the local `sfeed mcp` server entry. The user still needs `sfeed` installed locally and authenticated with `sfeed auth facebook`.
+If the agent supports installable plugins, prefer the sfeed plugin from this repo. The plugin bundles this skill and the local `sfeed mcp` server entry. The user still needs `sfeed` installed locally and must run the connection command for each platform they want.
 
 ## Important constraints
 
 - Facebook posting goes to Facebook Pages, not personal profiles
-- If more than one Page is connected, use `sfeed pages` and make page choice explicit
-- Instagram posting requires a professional Instagram account linked to a Facebook Page
+- Use `sfeed destinations` to inspect canonical Facebook and Instagram destinations
+- If more than one matching destination is connected, make the account choice explicit
+- Instagram posting requires a professional Business or Creator account, but not a Facebook Page
 - Instagram requires media, text-only Instagram posts do not work
 - Facebook supports feed posts, text-only posts, single-image posts, multi-image posts, single-video posts, Page Reels, and Page Stories
 - Instagram supports feed media, Reels, Stories, and image-only carousels up to 10 items
@@ -67,7 +69,7 @@ If the agent supports installable plugins, prefer the sfeed plugin from this rep
 ## Default workflow
 
 1. Inspect setup with `sfeed status`
-2. Inspect Pages with `sfeed pages` when needed
+2. Inspect publishing accounts with `sfeed destinations`
 3. Read the user's local drafts, media, and rules
 4. Show the final content, media, destination account, and timing
 5. Ask for approval before publishing unless the user already gave explicit approval
@@ -86,7 +88,7 @@ Useful command flow:
 
 ```bash
 sfeed status
-sfeed pages
+sfeed destinations
 sfeed post "Launch day. v0.1.3 is live." \
   --to facebook \
   --page "Acme Robotics" \
@@ -103,7 +105,7 @@ Agent behavior:
 
 User request:
 
-> Start the posting tool for Claude Code, inspect my connected Pages, draft an Instagram caption for `./assets/drop-1.jpg`, ask me to approve it, then post it.
+> Start the posting tool for Claude Code, inspect my connected destinations, draft an Instagram caption for `./assets/drop-1.jpg`, ask me to approve it, then post it.
 
 Useful command flow:
 
@@ -115,8 +117,8 @@ sfeed mcp
 After MCP is configured, the agent should:
 
 1. check `sfeed_status`
-2. call `sfeed_pages` if more than one Page is connected
-3. confirm the Instagram account is available on the chosen Page
+2. call `sfeed_destinations`
+3. choose the direct Instagram destination the user wants
 4. show the caption draft
 5. call `sfeed_post` with `dry_run: true` when validation is useful
 6. call `sfeed_post` with the local media path after approval
