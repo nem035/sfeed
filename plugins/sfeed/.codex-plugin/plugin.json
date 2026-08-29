@@ -1,7 +1,7 @@
 {
   "name": "sfeed",
-  "version": "0.2.2",
-  "description": "Turn rough notes, launch updates, event details, blog posts, and client briefs into Facebook and Instagram posts that Codex can publish or schedule through the local sfeed CLI and MCP server.",
+  "version": "0.3.5",
+  "description": "Publish, schedule, inspect, and manage reviewed Facebook Page and Instagram content through the local sfeed CLI and MCP server.",
   "author": {
     "name": "Nemantic",
     "email": "support@sfeed.dev",
@@ -23,11 +23,11 @@
   "interface": {
     "displayName": "sfeed",
     "shortDescription": "Post and schedule social content from Codex.",
-    "longDescription": "sfeed gives Codex a local workflow for checking connected Facebook Pages and Instagram accounts, drafting posts, validating media, publishing now, and scheduling posts for later through the sfeed MCP server.",
+    "longDescription": "sfeed gives Codex a local workflow for checking connected Facebook Pages and Instagram accounts, validating media, publishing reviewed content, managing Page posts, and scheduling posts through the sfeed MCP server.",
     "developerName": "Nemantic",
     "category": "Productivity",
     "capabilities": [
-      "Interactive",
+      "Read",
       "Write"
     ],
     "websiteURL": "https://sfeed.dev",
@@ -42,5 +42,10 @@
     "composerIcon": "./assets/logo.png",
     "logo": "./assets/logo.png"
   },
-  "mcpServers": "./.mcp.json"
+  "mcpServers": {
+    "sfeed": {
+      "command": "sfeed",
+      "args": ["mcp"]
+    }
+  }
 }

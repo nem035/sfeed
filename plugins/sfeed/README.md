@@ -1,4 +1,4 @@
-# sfeed plugin
+# sfeed plugin 0.3.5
 
 This plugin gives Codex and Claude a shared sfeed skill plus an MCP server entry for `sfeed mcp`.
 
@@ -24,3 +24,11 @@ sfeed mcp
 Use the skill when an agent needs to check account status, list publishing
 destinations, draft a post, validate media with `dry_run`, publish now, schedule
 for later, inspect the hosted queue, or report a user-approved problem.
+
+Read-only checks and dry runs are safe to perform immediately. The skill
+requires a destination-specific preview and user approval before publishing,
+scheduling, editing, deleting, revoking, or reporting.
+
+The Claude manifest uses `.mcp.json`. The Codex manifest declares the same
+server inline because the two plugin hosts currently expect different MCP
+configuration envelopes.

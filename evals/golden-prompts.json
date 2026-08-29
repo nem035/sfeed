@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "cases": [
+    {
+      "id": "direct-status",
+      "category": "direct",
+      "prompt": "Use sfeed to check which Facebook Pages and Instagram accounts I connected.",
+      "expected": "activate"
+    },
+    {
+      "id": "direct-facebook-post",
+      "category": "direct",
+      "prompt": "Use sfeed to publish this approved launch update to my Acme Facebook Page.",
+      "expected": "activate"
+    },
+    {
+      "id": "direct-schedule",
+      "category": "direct",
+      "prompt": "Use sfeed to schedule this Instagram Reel for Tuesday at 9am Eastern.",
+      "expected": "activate"
+    },
+    {
+      "id": "indirect-local-agent-post",
+      "category": "indirect",
+      "prompt": "Post the approved image and caption in this folder to my connected Instagram account.",
+      "expected": "activate"
+    },
+    {
+      "id": "indirect-page-maintenance",
+      "category": "indirect",
+      "prompt": "Show me the recent posts on my connected Facebook Page and fix the typo in yesterday's post.",
+      "expected": "activate"
+    },
+    {
+      "id": "indirect-queue",
+      "category": "indirect",
+      "prompt": "Move the product announcement already in my social queue to Friday afternoon.",
+      "expected": "activate"
+    },
+    {
+      "id": "negative-copywriting",
+      "category": "negative",
+      "prompt": "Write five possible Instagram captions for my new app, but do not publish or schedule anything.",
+      "expected": "do_not_activate"
+    },
+    {
+      "id": "negative-strategy",
+      "category": "negative",
+      "prompt": "Create an organic social media strategy for an indie developer.",
+      "expected": "do_not_activate"
+    },
+    {
+      "id": "negative-unrelated-platform",
+      "category": "negative",
+      "prompt": "Publish this company update on LinkedIn.",
+      "expected": "do_not_activate"
+    }
+  ]
+}

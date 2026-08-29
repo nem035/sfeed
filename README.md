@@ -4,6 +4,8 @@ Let your AI agent post to Facebook Pages and Instagram with `sfeed`.
 
 Keep your drafts, media, and rules where they already live. Give your agent one prompt, connect Meta in the browser, review the post, and publish. Posting now is free. Pay only when you want scheduled posts to run later.
 
+Meta production access is approved for Facebook Page and Instagram publishing.
+
 Most of the product lives at [sfeed.dev](https://sfeed.dev).
 
 - Docs: [sfeed.dev/docs](https://sfeed.dev/docs)
@@ -44,6 +46,7 @@ For Codex:
 
 ```bash
 codex plugin marketplace add nem035/sfeed --sparse .agents/plugins --sparse plugins
+codex plugin add sfeed@sfeed
 ```
 
 For Claude:
@@ -52,6 +55,10 @@ For Claude:
 claude plugin marketplace add nem035/sfeed
 claude plugin install sfeed@sfeed
 ```
+
+These GitHub marketplace installs are available now. The same source package is
+also prepared for the reviewed Claude community marketplace and OpenAI plugin
+directory. Until those reviews complete, use the commands above.
 
 ## What the user gets
 
@@ -159,6 +166,28 @@ Each skill is in `skills/<name>/SKILL.md`.
 Skills describe how to use `sfeed` with agents. They do not describe private deployment details.
 
 The installable Codex and Claude plugin package lives in `plugins/sfeed`.
+
+## Extension release checks
+
+Run the deterministic release checks before publishing plugin changes:
+
+```bash
+npm test
+claude plugin validate . --strict
+claude plugin validate ./plugins/sfeed --strict
+```
+
+Build the OpenAI skills-only submission archive with:
+
+```bash
+npm run build:openai
+```
+
+The OpenAI archive intentionally excludes the local stdio MCP declaration. The
+repository plugins include the local `sfeed mcp` server for Codex and Claude
+Code, while the reviewed OpenAI skills-only package works on surfaces that can
+run the local sfeed CLI. A future public HTTPS MCP server can replace that
+surface limitation.
 
 ## Practical examples
 

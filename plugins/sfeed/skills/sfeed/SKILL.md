@@ -1,204 +1,173 @@
 ---
 name: sfeed
-description: Use when the user wants to post, schedule, inspect, preview, or manage Facebook Page or Instagram content with sfeed CLI or MCP. Always confirm before publishing or scheduling.
+description: >-
+  Use when the user wants to connect, inspect, publish, schedule, edit, or
+  delete Facebook Page or Instagram content through sfeed, including requests
+  that refer indirectly to connected social accounts or a social queue. Do not
+  use for generic copywriting, strategy, analytics, unsupported platforms, or
+  requests that do not include a sfeed publishing or account-management goal.
 ---
 
-# sfeed Social Media Posting Skill
+# sfeed
 
-sfeed is a CLI + MCP tool for posting to Facebook Pages and Instagram. It handles auth, posting, hosted scheduling, and MCP access for AI agents.
+sfeed is a local CLI and MCP server for Facebook Page and Instagram publishing.
+Use MCP tools when they are available and the CLI otherwise. If neither a local
+shell nor sfeed MCP tools are available, explain setup without claiming an
+action ran.
 
-sfeed does not generate copy for the user. Write the post yourself from the user's request, then use sfeed to publish or schedule it.
+## Action boundary
 
-## Setup Check
+Read-only checks, drafting, and `dry_run` validation do not need confirmation.
+Before an external write, show the exact content, platform, destination, media,
+post kind, and timing, then ask for approval. External writes include:
 
-Before doing anything, verify sfeed is set up:
+- publishing now
+- creating or changing a scheduled post
+- editing or deleting a published Facebook Page post
+- revoking an account connection
+- sending a problem report
 
-1. Run `sfeed status` for the full picture
-2. Or run `sfeed auth status` if you only need to know which platforms are connected
-3. If Facebook is needed but disconnected, ask the user to run `sfeed auth facebook connect`
-4. If Instagram is needed but disconnected, ask the user to run `sfeed auth instagram connect`
+Do not treat approval of one post as approval for later posts. Never expose
+sfeed identity tokens, agent tokens, or provider credentials.
 
-When `SFEED_AGENT_TOKEN` is present, do not ask the agent process to connect or
-revoke providers, manage billing or keys, read audit events, or open hosted
-dashboard and preview URLs. Those are owner-only operations. A scoped agent
-should use the destinations returned by `sfeed destinations` or
-`sfeed_destinations`; the hosted service filters them by the key policy.
+## First-run workflow
 
-## How to Post
-
-### Step 1: Check state
-
-Start here:
-
-```bash
-sfeed status
-```
-
-Or via MCP: call `sfeed_status`
-
-This shows:
-- Connected platforms
-- Subscription status
-- Scheduled posts
-
-Call `sfeed_destinations` or run `sfeed destinations` before posting so you can choose the canonical destination ID for each platform. `sfeed_pages` remains available for Facebook Page compatibility workflows.
-
-### Step 2: Write the post
-
-Craft the post content from the user's request. If the user wants different versions per platform, draft them separately and confirm which one should be posted where.
-
-### Step 3: Confirm with the user
-
-Always show the drafted post(s) to the user before posting. Show each platform variant if they differ.
-
-### Step 4: Post
+1. Ask which platforms the user wants: Facebook, Instagram, or both.
+2. Ask where drafts, media, and posting rules already live.
+3. Check `sfeed --version` and then run `sfeed status`.
+4. If sfeed is missing, install it with:
 
 ```bash
-sfeed post "your content here" --to facebook,instagram
+curl -fsSL https://sfeed.dev/install.sh | sh
 ```
 
-Or via MCP: call `sfeed_post` with content, platforms, `destination_ids`, and optional media or `schedule_at`.
-
-Options:
-- `--to` / `platforms`: comma-separated platforms (facebook, instagram)
-- `--media` / `media`: local files or public URLs. sfeed stages local files automatically when Instagram or hosted scheduling needs a public URL
-- `--at` / `schedule_at`: ISO 8601 datetime to schedule for
-- `--page`: CLI account name or ID selector when more than one matching destination is connected
-- `destination_ids`: MCP map from platform to canonical destination ID; get IDs from `sfeed_destinations`
-- `--dry-run` / `dry_run`: validate media and preview inputs without publishing or scheduling
-
-Use dry-run first when the user is testing or when media validation is useful.
-
-## Connecting Accounts
+5. Connect only the platforms the user requested:
 
 ```bash
 sfeed auth facebook connect
 sfeed auth instagram connect
 ```
 
-Run the command for each platform the user wants. Facebook connects selected Pages through Facebook Login for Business. Instagram connects a professional Business or Creator account directly through Instagram Login and does not require a Facebook Page. Provider credentials remain encrypted in the hosted service; the CLI stores only its sfeed identity and safe destination metadata.
+6. Run `sfeed destinations`. Make the destination explicit when more than one
+   matching account is connected.
 
-## Platform Specifics
+Facebook connects selected Pages. Instagram connects a professional Business
+or Creator account directly and does not require a Facebook Page. Browser auth
+requires the user to complete Meta's consent flow.
 
-### Facebook Pages
-- Posts go to your Facebook Page. The API does not support personal profiles.
-- Supports immediate posting and hosted scheduling via `--at`
-- Supports text-only, single-image, multi-image, and single-video posts
-- `sfeed posts list` and `sfeed posts show` read current Page-owned posts
-- `sfeed posts edit` can replace the text of a post created by sfeed
-- `sfeed posts delete` permanently deletes a post created by sfeed only after explicit confirmation
-- Longer content is fine
+## Publish workflow
 
-### Instagram
-- Requires at least one image or video (no text-only posts)
-- Supports single-image, single-video, and image-only carousels
-- Scheduled posts use sfeed's hosted scheduler
-- Reels: all single-feed videos become Reels
+1. Run `sfeed status` or call `sfeed_status`.
+2. Run `sfeed destinations` or call `sfeed_destinations`.
+3. Read the user's source material and prepare the final platform-specific post.
+4. Use `--dry-run` or `dry_run: true` when media or destination validation is useful.
+5. Show the complete action and get approval.
+6. Publish or schedule with `sfeed post` or `sfeed_post`.
+7. Return the post result or scheduled-job ID. Never report success before the
+   command or tool returns successfully.
 
-## Checking State
-
-Before posting or scheduling, check the current state:
+CLI example:
 
 ```bash
-sfeed status
+sfeed post "Launch day. The release is live." \
+  --to facebook \
+  --page "Acme Robotics" \
+  --media ./content/media/launch-card.jpg
 ```
 
-Or via MCP: call `sfeed_status`
+MCP calls should pass the canonical IDs from `sfeed_destinations` in
+`destination_ids`. The CLI can use `--page` with an account name, external ID,
+or canonical destination ID.
 
-This returns a combined overview of auth connections, subscription status, and scheduled posts. Call this first to understand what's set up before doing anything else.
+## Platform rules
 
-To see scheduled posts in detail:
+Facebook:
 
-```bash
-sfeed schedule list
-sfeed schedule list --status failed
-sfeed schedule list --status posted
-sfeed schedule list --json   # machine-readable
-```
+- publishes to Pages, not personal profiles or Groups
+- supports text-only feed posts, images, multiple images, videos, Page Reels,
+  and Page Stories
+- supports published-post list, show, edit, and delete operations when Meta
+  grants the required permissions
 
-Or via MCP: call `sfeed_schedule_list` with optional `format: "json"` and `status: "pending" | "failed" | "posted" | "all"`.
+Instagram:
+
+- requires a professional Business or Creator account
+- requires media; text-only posts are unsupported
+- supports feed media, Reels, Stories, and image-only carousels of up to 10 items
+
+Use `--kind feed`, `--kind reel`, `--kind story`, or `--kind carousel` when the
+desired shape is not obvious. A Story takes exactly one image or video.
 
 ## Scheduling
 
+Scheduling is hosted and requires an active subscription. Make the timezone
+explicit and use an ISO 8601 time with an offset.
+
 ```bash
-sfeed post "content" --to facebook --at "2024-12-31T09:00:00Z"
+sfeed post "Tuesday product update" \
+  --to facebook \
+  --page "Acme Robotics" \
+  --at "2026-09-01T09:00:00-04:00"
 ```
 
-- Scheduled posts are stored on sfeed's hosted scheduler
-- Hosted scheduling requires an active subscription
-- Local staged media must be within 90 days
-- Local staged files must be 100 MB or smaller
-- Schedule times must be ISO 8601 with a timezone, for example `2026-04-01T09:00:00Z`
+Inspect before mutating a job identified by description rather than ID:
 
-## File Locations
+```bash
+sfeed schedule status
+sfeed schedule list --json
+sfeed schedule preview <id>
+sfeed schedule reschedule <id> --at "2026-09-04T14:00:00-04:00"
+sfeed schedule duplicate <id>
+sfeed schedule cancel <id>
+```
 
-| File | Purpose |
-|------|---------|
-| `~/.sfeed/tokens.json` | sfeed identity and safe destination metadata (chmod 600) |
-| `~/.sfeed/subscription.json` | Cached hosted subscription status |
+## Published Facebook posts
 
-Scoped runtimes should receive `SFEED_USER_ID` and `SFEED_AGENT_TOKEN` from the
-process environment. Do not put the agent token in the owner's
-`~/.sfeed/.env`. If the runtime can read the owner's `~/.sfeed/tokens.json`, it
-can recover owner authority, so untrusted agents require OS-user, container, or
-sandbox isolation from that file.
+Use these only for a connected Facebook Page. List or read first when the user
+describes a post instead of supplying an exact ID.
 
-## MCP Tools Reference
+```bash
+sfeed posts list --page "Acme Robotics"
+sfeed posts show <post-id> --page "Acme Robotics"
+sfeed posts edit <post-id> --page "Acme Robotics" --content "Updated text"
+sfeed posts delete <post-id> --page "Acme Robotics" --yes
+```
 
-| Tool | Purpose |
-|------|---------|
-| `sfeed_status` | Complete overview: auth, subscription, and schedule |
-| `sfeed_auth_status` | Check authenticated platforms |
-| `sfeed_destinations` | List canonical Facebook and Instagram publishing destinations |
-| `sfeed_pages` | List connected page IDs and Instagram linkage |
-| `sfeed_post` | Publish, schedule, or dry-run a post |
-| `sfeed_facebook_posts_list` | List recent posts owned by one connected Facebook Page |
-| `sfeed_facebook_post_get` | Read one Page post and its live URL |
-| `sfeed_facebook_post_update` | Replace the text of a Page post created by sfeed |
-| `sfeed_facebook_post_delete` | Permanently delete a Page post created by sfeed after explicit user confirmation |
-| `sfeed_schedule_status` | Queue counts, next scheduled posts, and recent failures |
-| `sfeed_schedule_dashboard_url` | Owner only: get a signed browser URL for the hosted queue UI |
-| `sfeed_schedule_preview_url` | Owner only: get a signed browser URL for one scheduled post |
-| `sfeed_schedule_list` | List scheduled posts (supports `format` and `status`) |
-| `sfeed_schedule_reschedule` | Move a pending scheduled post to a new time |
-| `sfeed_schedule_duplicate` | Copy a scheduled post into a fresh pending job |
-| `sfeed_schedule_cancel` | Cancel a scheduled post |
-| `sfeed_report_problem` | Send a user-approved problem report |
+Before edit or delete, show the selected Page, post ID, current content, and
+exact change. Deletion is permanent.
 
-## CLI Commands Reference
+## Owner and scoped-agent modes
 
-| Command | Purpose |
-|---------|---------|
-| `sfeed status` | Complete overview of auth, subscription, and schedule |
-| `sfeed dashboard` | Open the hosted queue UI in a browser |
-| `sfeed dashboard --view calendar` | Open the hosted queue UI as a month calendar |
-| `sfeed calendar` | Open the hosted queue UI as a month calendar |
-| `sfeed auth facebook connect` | Connect or reconnect Facebook Pages |
-| `sfeed auth instagram connect` | Connect or reconnect direct Instagram |
-| `sfeed auth facebook revoke` | Revoke Facebook access in sfeed without affecting Instagram |
-| `sfeed auth instagram revoke` | Revoke Instagram access in sfeed without affecting Facebook |
-| `sfeed auth status` | Show connection status |
-| `sfeed post <content>` | Post to platforms (`--to`, `--media`, `--at`, `--page`) |
-| `sfeed posts list` | List recent Page-owned Facebook posts |
-| `sfeed posts show <id>` | Read one Facebook Page post |
-| `sfeed posts edit <id>` | Replace the text of a Facebook Page post created by sfeed |
-| `sfeed posts delete <id>` | Permanently delete a Facebook Page post after confirmation |
-| `sfeed schedule status` | Show queue counts and recent activity |
-| `sfeed schedule open` | Open the same hosted queue UI as `sfeed dashboard` |
-| `sfeed schedule calendar` | Open the same hosted queue UI as a month calendar |
-| `sfeed schedule list` | List scheduled posts (`--status`, `--json`) |
-| `sfeed schedule preview <id>` | Open a browser preview for one scheduled post |
-| `sfeed schedule reschedule <id>` | Move a pending scheduled post |
-| `sfeed schedule duplicate <id>` | Copy a scheduled post into a fresh pending job |
-| `sfeed schedule cancel <id>` | Cancel a scheduled post |
-| `sfeed pages` | List connected pages |
-| `sfeed destinations` | List canonical publishing destinations |
-| `sfeed agents create` | Owner only: create a scoped agent credential |
-| `sfeed agents list` | Owner only: list agent credentials |
-| `sfeed agents revoke <id>` | Owner only: revoke an agent credential |
-| `sfeed audit --json` | Owner only: inspect content-free hosted activity |
-| `sfeed billing` | Show subscription status |
-| `sfeed billing subscribe` | Start hosted scheduling subscription |
-| `sfeed billing portal` | Open the billing portal |
-| `sfeed report "what went wrong"` | Send a user-written problem report |
-| `sfeed mcp` | Start MCP server |
+When `SFEED_AGENT_TOKEN` is present, the hosted service limits destinations and
+operations according to the owner's policy. In scoped mode, do not attempt to:
+
+- connect or revoke providers
+- manage billing or agent keys
+- read the owner audit stream
+- mint hosted dashboard or preview URLs
+
+Use only destinations returned by `sfeed destinations` or
+`sfeed_destinations`. An untrusted agent must not be able to read the owner's
+`~/.sfeed/tokens.json`; isolate it with a separate OS user, container, or
+sandbox.
+
+## Tool choice
+
+Prefer these MCP tools when available:
+
+- `sfeed_status` and `sfeed_destinations` for readiness and account selection
+- `sfeed_post` for dry runs, immediate publishing, and scheduling
+- `sfeed_facebook_posts_list`, `sfeed_facebook_post_get`,
+  `sfeed_facebook_post_update`, and `sfeed_facebook_post_delete` for Page posts
+- `sfeed_schedule_*` tools for queue inspection and mutation
+
+Use CLI commands when MCP is unavailable or when a command gives a clearer
+interactive owner flow, such as browser authentication or billing.
+
+## References
+
+- https://sfeed.dev/docs
+- https://sfeed.dev/docs/posting
+- https://sfeed.dev/docs/scheduling
+- https://sfeed.dev/docs/mcp
+- https://sfeed.dev/docs/agent-keys
