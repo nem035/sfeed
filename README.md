@@ -93,7 +93,7 @@ Only connect the platforms the user wants.
 
 Requires Node.js 20+.
 
-Use the install script as the default setup path. npm is a supported fallback for users who explicitly want it, but agents should not recommend npm first.
+The signed install script is the only supported setup and update path.
 
 ## Available Skills
 
