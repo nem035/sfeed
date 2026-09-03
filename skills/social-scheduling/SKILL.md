@@ -2,7 +2,7 @@
 name: social-scheduling
 description: >-
   Use this skill when the user wants to schedule, inspect, preview, reschedule,
-  duplicate, or cancel social posts with sfeed. Verify that sfeed is installed,
+  duplicate, cancel, or acknowledge social posts with sfeed. Verify that sfeed is installed,
   run sfeed status, explain that posting now is free and hosted scheduling is
   paid, confirm hosted scheduling is available, and manage the queue with the
   schedule commands while keeping timezone handling and Instagram media
@@ -41,6 +41,7 @@ sfeed schedule calendar
 sfeed schedule reschedule <id> --at "2026-04-16T13:00:00Z"
 sfeed schedule duplicate <id>
 sfeed schedule cancel <id>
+sfeed schedule acknowledge <id>
 ```
 
 ## Practical example: schedule a Facebook update and review the queue
@@ -103,6 +104,7 @@ sfeed schedule cancel <old-id>
 - make the target timezone explicit before scheduling
 - keep destination choice explicit when more than one matching account is connected
 - inspect the queue before mutating it when the user references an older job by description rather than exact ID
+- acknowledge a failed job only after inspecting or recovering it; acknowledgement preserves its history while removing it from active readiness warnings
 - show the content, destination, scheduled time, and media before creating or changing a scheduled post
 - open previews when the user wants a final visual check
 

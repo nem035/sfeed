@@ -1,4 +1,4 @@
-# sfeed plugin 0.3.5
+# sfeed plugin 0.3.6
 
 This plugin gives Codex and Claude a shared sfeed skill plus an MCP server entry for `sfeed mcp`.
 

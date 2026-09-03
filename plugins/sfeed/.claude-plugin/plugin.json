@@ -1,6 +1,6 @@
 {
   "name": "sfeed",
-  "version": "0.3.5",
+  "version": "0.3.6",
   "description": "Publish, schedule, inspect, and manage reviewed Facebook Page and Instagram content through the local sfeed CLI and MCP server.",
   "author": {
     "name": "Nemantic",

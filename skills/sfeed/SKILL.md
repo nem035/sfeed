@@ -119,7 +119,15 @@ sfeed schedule preview <id>
 sfeed schedule reschedule <id> --at "2026-09-04T14:00:00-04:00"
 sfeed schedule duplicate <id>
 sfeed schedule cancel <id>
+sfeed schedule acknowledge <id>
 ```
+
+After inspecting a failed job and either recovering it or confirming no further
+action is needed, acknowledge it so readiness checks no longer report it as an
+active incident. Acknowledgement preserves the failure and its error in
+history. Never acknowledge failures merely to clear a warning. Use
+`sfeed schedule acknowledge --all` only after reviewing every unacknowledged
+failure.
 
 ## Published Facebook posts
 

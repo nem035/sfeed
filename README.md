@@ -232,6 +232,7 @@ sfeed schedule preview <id>
 sfeed schedule reschedule <id> --at "2026-04-11T13:00:00Z"
 sfeed schedule duplicate <id>
 sfeed schedule cancel <id>
+sfeed schedule acknowledge <id>
 ```
 
 Facebook supports feed posts, text-only posts, single-image posts, multi-image posts, single-video posts, Page Reels, and Page Stories. Instagram supports feed media, Reels, Stories, and image-only carousels up to 10 items. Use `--kind feed`, `--kind reel`, `--kind story`, or `--kind carousel` when the media shape alone is not clear.
