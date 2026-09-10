@@ -55,6 +55,22 @@ Facebook connects selected Pages. Instagram connects a professional Business
 or Creator account directly and does not require a Facebook Page. Browser auth
 requires the user to complete Meta's consent flow.
 
+## Multiple Facebook connections
+
+An owner can run `sfeed auth facebook connect` again to add another business.
+The same business refreshes its existing connection, even through a different
+Facebook profile. The browser controls which profile authorizes access.
+Inspect `sfeed auth facebook connections --json` and `sfeed destinations`;
+use Page IDs when names collide.
+
+Preview removal with `sfeed auth facebook revoke --connection <id>`.
+Review affected Pages and pending jobs, then add `--yes` after approval.
+`--all` removes all Facebook connections only when explicitly requested.
+Revocation does not cancel jobs. Reconnect warnings identify Pages that lost
+their last active credential. Do not reset the entire Meta integration to
+troubleshoot one connection. Connection management is owner-only and is not
+available to scoped agent keys.
+
 ## Publish workflow
 
 1. Run `sfeed status` or call `sfeed_status`.

@@ -30,6 +30,13 @@ Important constraints:
 - Use `--kind reel` for Page Reels and `--kind story` for Page Stories
 - posting now is free, hosted scheduling is paid
 
+For multiple businesses, an owner can repeat `sfeed auth facebook connect` and
+inspect `sfeed auth facebook connections --json`. Reconnecting the same business
+refreshes its connection; omitted Pages may lose access. Preview a targeted
+disconnect with `sfeed auth facebook revoke --connection <id>` and add `--yes`
+only after approval. Do not remove the entire Meta integration to fix one Page.
+Scheduled jobs remain queued after disconnecting, so review the impact first.
+
 ## Practical example: post a reviewed draft to a specific Page
 
 The paths below are examples only. Use the user's actual files and folders.

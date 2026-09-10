@@ -237,6 +237,11 @@ sfeed schedule acknowledge <id>
 
 Facebook supports feed posts, text-only posts, single-image posts, multi-image posts, single-video posts, Page Reels, and Page Stories. Instagram supports feed media, Reels, Stories, and image-only carousels up to 10 items. Use `--kind feed`, `--kind reel`, `--kind story`, or `--kind carousel` when the media shape alone is not clear.
 
+Owners can connect multiple Facebook businesses and inspect them with
+`sfeed auth facebook connections`. Reconnecting the same business refreshes its
+access. See [connection management](https://sfeed.dev/docs/auth) for selecting
+Pages and previewing a targeted disconnect without removing other connections.
+
 ## MCP is optional
 
 Agents with terminal access can use the CLI directly. Add MCP when the agent client supports structured tools and you want repeatable status, page, post, and schedule calls.
