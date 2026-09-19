@@ -30,6 +30,11 @@ post kind, and timing, then ask for approval. External writes include:
 Do not treat approval of one post as approval for later posts. Never expose
 sfeed identity tokens, agent tokens, or provider credentials.
 
+If a client denies or cancels a tool call, stop that action until the user
+renews approval. Do not retry it or switch to the CLI to bypass the decision.
+Some clients prompt even for `dry_run` because it shares the publishing tool;
+keep the prompt enabled and explain that the requested operation is a dry run.
+
 ## First-run workflow
 
 1. Ask which platforms the user wants: Facebook, Instagram, or both.
