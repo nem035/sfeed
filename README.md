@@ -56,9 +56,10 @@ claude plugin marketplace add nem035/sfeed
 claude plugin install sfeed@sfeed
 ```
 
-These GitHub marketplace installs are available now. The same source package is
-also prepared for the reviewed Claude community marketplace and OpenAI plugin
-directory. Until those reviews complete, use the commands above.
+These GitHub marketplace installs are available now. Public directory approval
+is separate and is not claimed here; use the commands above. ChatGPT browser
+support will require a hosted, authenticated MCP service and is not available
+through this local plugin yet.
 
 ## What the user gets
 
@@ -244,7 +245,7 @@ Pages and previewing a targeted disconnect without removing other connections.
 
 ## MCP is optional
 
-Agents with terminal access can use the CLI directly. Add MCP when the agent client supports structured tools and you want repeatable status, page, post, and schedule calls.
+Agents with terminal access can use the CLI directly. Add MCP when the agent client supports structured tools and you want repeatable status, page, post, and schedule calls. Version 0.4.2 adds typed results and action annotations to all 18 tools, plus explicit recovery guidance for partial failures. Update the CLI using the install script, then restart the agent session to reload its MCP server.
 
 Claude Desktop example:
 
